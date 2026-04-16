@@ -20,6 +20,8 @@
     --rose: #c97d6e;
     --rose-pale: #f5e8e4;
     --rose-dark: #a85d50;
+    --lavender: #9b8bb4;
+    --lavender-pale: #f0ecf7;
     --text: #2d2418;
     --text-mid: #6b5d4f;
     --text-light: #9c8e82;
@@ -41,7 +43,7 @@
       radial-gradient(ellipse at 80% 100%, rgba(107,124,92,0.12) 0%, transparent 60%);
   }
 
-  /* LOADING SCREEN */
+  /* LOADING */
   .loading-screen {
     position: fixed; inset: 0;
     background: var(--cream);
@@ -50,9 +52,7 @@
     z-index: 200; gap: 16px;
     transition: opacity 0.4s ease;
   }
-
   .loading-screen.hidden { opacity: 0; pointer-events: none; }
-
   .spinner {
     width: 36px; height: 36px;
     border: 3px solid var(--stone-light);
@@ -60,13 +60,10 @@
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
   }
-
   @keyframes spin { to { transform: rotate(360deg); } }
-
   .loading-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; color: var(--text-mid);
-    font-style: italic;
+    font-size: 1.1rem; color: var(--text-mid); font-style: italic;
   }
 
   header {
@@ -94,7 +91,6 @@
     font-weight: 300; color: var(--bark);
     line-height: 1.15; margin-bottom: 16px;
   }
-
   h1 em { font-style: italic; color: var(--green); }
 
   .subtitle {
@@ -113,7 +109,6 @@
     background: white; border: 1px solid var(--stone-light);
     padding: 6px 14px; border-radius: 20px;
   }
-
   .meta-pill svg { width: 14px; height: 14px; }
 
   .grid-container {
@@ -132,7 +127,6 @@
     border: 1px solid rgba(201,185,154,0.3);
     transition: box-shadow 0.3s ease;
   }
-
   .therapist-card:hover { box-shadow: var(--shadow-hover); }
 
   .card-header {
@@ -141,15 +135,20 @@
     position: relative;
   }
 
-  .card-header.female { background: linear-gradient(135deg, #fdf0ed 0%, #faf3f8 100%); }
-  .card-header.male   { background: linear-gradient(135deg, #edf3f0 0%, #f0f4ee 100%); }
+  /* 3 female colours, 1 male */
+  .card-header.female1 { background: linear-gradient(135deg, #fdf0ed 0%, #faf3f8 100%); }
+  .card-header.female2 { background: linear-gradient(135deg, #fde8f0 0%, #faf0fb 100%); }
+  .card-header.female3 { background: linear-gradient(135deg, #ece8f7 0%, #f3f0fb 100%); }
+  .card-header.male1   { background: linear-gradient(135deg, #edf3f0 0%, #f0f4ee 100%); }
 
   .gender-dot {
     width: 8px; height: 8px; border-radius: 50%;
     display: inline-block; margin-right: 6px; vertical-align: middle;
   }
-  .female .gender-dot { background: var(--rose); }
-  .male   .gender-dot { background: var(--green); }
+  .female1 .gender-dot { background: var(--rose); }
+  .female2 .gender-dot { background: #d4719e; }
+  .female3 .gender-dot { background: var(--lavender); }
+  .male1   .gender-dot { background: var(--green); }
 
   .therapist-name {
     font-family: 'Cormorant Garamond', serif;
@@ -167,7 +166,6 @@
     background: white; border: 1px solid var(--stone-light);
     padding: 3px 10px; border-radius: 20px;
   }
-
   .slots-count span { color: var(--green); font-weight: 500; }
 
   .slots-list {
@@ -199,7 +197,6 @@
     background: var(--rose-pale); border-color: var(--rose);
     color: var(--rose-dark); cursor: pointer; font-weight: 500;
   }
-
   .slot-btn.mine:hover {
     background: #f0dbd6; border-color: var(--rose-dark);
     transform: translateY(-1px);
@@ -210,17 +207,16 @@
     display: block; font-size: 9px; letter-spacing: 0.05em;
     text-transform: uppercase; margin-top: 2px;
   }
-
   .slot-btn.booked .slot-sub { color: var(--booked-text); }
   .slot-btn.mine .slot-sub   { color: var(--rose); }
 
+  /* OVERLAY & MODAL */
   .overlay {
     display: none; position: fixed; inset: 0;
     background: rgba(45,36,24,0.55);
     backdrop-filter: blur(6px); z-index: 100;
     align-items: center; justify-content: center; padding: 20px;
   }
-
   .overlay.active { display: flex; }
 
   .modal {
@@ -278,12 +274,10 @@
     color: var(--text); background: white;
     transition: border-color 0.2s, box-shadow 0.2s; outline: none;
   }
-
   input:focus {
     border-color: var(--green-light);
     box-shadow: 0 0 0 3px rgba(107,124,92,0.12);
   }
-
   input.error { border-color: var(--rose); }
 
   .error-msg { font-size: 11px; color: var(--rose); margin-top: 5px; display: none; }
@@ -322,7 +316,6 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem; color: var(--bark); margin-bottom: 8px;
   }
-
   .center-content p {
     font-size: 13.5px; color: var(--text-mid);
     line-height: 1.6; margin-bottom: 20px;
@@ -378,6 +371,7 @@
   }
   .btn-calendar:hover { background: var(--green-pale); border-color: var(--green-light); }
 
+  /* LEGEND */
   .legend {
     display: flex; align-items: center; justify-content: center;
     gap: 20px; flex-wrap: wrap;
@@ -405,7 +399,6 @@
 </head>
 <body>
 
-<!-- Loading screen -->
 <div class="loading-screen" id="loadingScreen">
   <div class="spinner"></div>
   <div class="loading-text">Loading bookings…</div>
@@ -446,7 +439,6 @@
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
 
-    <!-- SCREEN 1: Book -->
     <div class="screen" id="screenBook">
       <div class="modal-eyebrow">Book your slot</div>
       <h2 id="bookTherapist"></h2>
@@ -464,7 +456,6 @@
       <button class="btn-confirm" id="btnConfirm" onclick="confirmBooking()">Confirm Booking</button>
     </div>
 
-    <!-- SCREEN 2: Success -->
     <div class="screen" id="screenSuccess">
       <div class="center-content">
         <div class="icon-circle icon-green">🌿</div>
@@ -476,7 +467,6 @@
       </div>
     </div>
 
-    <!-- SCREEN 3: Manage -->
     <div class="screen" id="screenManage">
       <div class="modal-eyebrow">Your booking</div>
       <h2 id="manageTherapist"></h2>
@@ -487,7 +477,6 @@
       <button class="btn-outline" onclick="closeModal()">Keep my booking</button>
     </div>
 
-    <!-- SCREEN 4: Verify -->
     <div class="screen" id="screenVerify">
       <div class="modal-eyebrow">Confirm it's you</div>
       <h2>Enter your name</h2>
@@ -501,7 +490,6 @@
       <button class="btn-outline" onclick="showScreen('screenManage')">Go back</button>
     </div>
 
-    <!-- SCREEN 5: Cancelled -->
     <div class="screen" id="screenCancelled">
       <div class="center-content">
         <div class="icon-circle icon-rose">✓</div>
@@ -518,13 +506,11 @@
   Reflexology Bookings · Staff Appreciation Event · 20 April 2026
 </footer>
 
-<!-- Firebase SDK -->
 <script type="module">
-  import { initializeApp }          from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+  import { initializeApp }   from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
   import { getDatabase, ref, set, remove, onValue, get }
     from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 
-  // ── FIREBASE CONFIG ──────────────────────────────────────
   const firebaseConfig = {
     apiKey: "AIzaSyArzGldUUm_EHyFdG1ox-ydrhhXHmNhLIg",
     authDomain: "reflexology-lv.firebaseapp.com",
@@ -538,15 +524,15 @@
   const app = initializeApp(firebaseConfig);
   const db  = getDatabase(app);
 
-  // ── CONFIG ───────────────────────────────────────────────
   const EVENT_DATE         = '2026-04-20';
   const EVENT_DATE_DISPLAY = 'Monday, 20 April 2026';
 
+  // ── Updated therapist list ────────────────────────────────
   const THERAPISTS = [
-    { id: 'f1', name: 'Female Therapist 1', gender: 'female' },
-    { id: 'f2', name: 'Female Therapist 2', gender: 'female' },
-    { id: 'm1', name: 'Male Therapist 1',   gender: 'male'   },
-    { id: 'm2', name: 'Male Therapist 2',   gender: 'male'   },
+    { id: 'f1', name: 'Female Therapist 1', gender: 'female1' },
+    { id: 'f2', name: 'Female Therapist 2', gender: 'female2' },
+    { id: 'f3', name: 'Female Therapist 3', gender: 'female3' },
+    { id: 'm1', name: 'Male Therapist 1',   gender: 'male1'   },
   ];
 
   function generateSlots() {
@@ -568,8 +554,6 @@
 
   const SLOTS = generateSlots();
 
-  // ── SESSION IDENTITY ─────────────────────────────────────
-  // Each browser session gets a unique ID so users can identify their own bookings
   function getSessionId() {
     let sid = sessionStorage.getItem('reflexSessionId');
     if (!sid) {
@@ -580,12 +564,8 @@
   }
 
   const SESSION_ID = getSessionId();
-
-  // ── LIVE DATA ────────────────────────────────────────────
-  // bookings = { "f1_0830": { name, phone, sessionId }, ... }
   let bookings = {};
 
-  // Listen to Firebase in real time — updates everyone's page instantly
   const bookingsRef = ref(db, 'bookings');
   onValue(bookingsRef, (snapshot) => {
     bookings = snapshot.val() || {};
@@ -599,7 +579,6 @@
     setTimeout(() => ls.style.display = 'none', 400);
   }
 
-  // ── RENDER ───────────────────────────────────────────────
   function countAvailable(tid) {
     return SLOTS.filter(s => !bookings[`${tid}_${s.id}`]).length;
   }
@@ -651,7 +630,6 @@
     });
   }
 
-  // ── MODAL HELPERS ────────────────────────────────────────
   let curT = null, curS = null;
 
   window.showScreen = function(id) {
@@ -668,7 +646,6 @@
     if (e.target === this) window.closeModal();
   });
 
-  // ── BOOK ─────────────────────────────────────────────────
   function openBookModal(therapist, slot) {
     curT = therapist; curS = slot;
     document.getElementById('bookTherapist').textContent = therapist.name;
@@ -708,12 +685,9 @@
     if (!valid) return;
 
     const btn = document.getElementById('btnConfirm');
-    btn.disabled    = true;
-    btn.textContent = 'Saving…';
+    btn.disabled = true; btn.textContent = 'Saving…';
 
     const key = `${curT.id}_${curS.id}`;
-
-    // Check slot is still free before saving
     const snap = await get(ref(db, `bookings/${key}`));
     if (snap.exists()) {
       alert('Sorry, this slot was just taken by someone else. Please choose another time.');
@@ -722,8 +696,7 @@
     }
 
     await set(ref(db, `bookings/${key}`), {
-      name,
-      phone,
+      name, phone,
       sessionId: SESSION_ID,
       bookedAt: new Date().toISOString()
     });
@@ -741,7 +714,6 @@
     window.showScreen('screenSuccess');
   };
 
-  // ── MANAGE / CANCEL ──────────────────────────────────────
   function openManageModal(therapist, slot) {
     curT = therapist; curS = slot;
     const key     = `${therapist.id}_${slot.id}`;
@@ -771,8 +743,7 @@
     document.getElementById('verifyError').classList.remove('show');
 
     const btn = document.getElementById('btnCancelConfirm');
-    btn.disabled    = true;
-    btn.textContent = 'Cancelling…';
+    btn.disabled = true; btn.textContent = 'Cancelling…';
 
     await remove(ref(db, `bookings/${key}`));
 
@@ -780,7 +751,6 @@
     window.showScreen('screenCancelled');
   };
 
-  // ── CALENDAR ─────────────────────────────────────────────
   window.addToCalendar = function() {
     if (!curT || !curS) return;
     const [sh, sm] = curS.label.split(':').map(Number);
