@@ -45,20 +45,16 @@
 
   /* LOADING */
   .loading-screen {
-    position: fixed; inset: 0;
-    background: var(--cream);
+    position: fixed; inset: 0; background: var(--cream);
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    z-index: 200; gap: 16px;
-    transition: opacity 0.4s ease;
+    z-index: 200; gap: 16px; transition: opacity 0.4s ease;
   }
   .loading-screen.hidden { opacity: 0; pointer-events: none; }
   .spinner {
     width: 36px; height: 36px;
-    border: 3px solid var(--stone-light);
-    border-top-color: var(--green);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+    border: 3px solid var(--stone-light); border-top-color: var(--green);
+    border-radius: 50%; animation: spin 0.8s linear infinite;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
   .loading-text {
@@ -66,81 +62,55 @@
     font-size: 1.1rem; color: var(--text-mid); font-style: italic;
   }
 
-  header {
-    text-align: center;
-    padding: 56px 24px 40px;
-  }
+  /* ── BOOKING PAGE ── */
+  #bookingPage { display: block; }
 
-  .header-line {
-    width: 60px; height: 1px;
-    background: var(--stone);
-    margin: 0 auto 24px;
-  }
-
+  header { text-align: center; padding: 56px 24px 40px; }
+  .header-line { width: 60px; height: 1px; background: var(--stone); margin: 0 auto 24px; }
   .event-badge {
-    display: inline-block;
-    font-size: 11px; font-weight: 500;
+    display: inline-block; font-size: 11px; font-weight: 500;
     letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--green); background: var(--green-pale);
     padding: 6px 16px; border-radius: 20px; margin-bottom: 20px;
   }
-
   h1 {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 300; color: var(--bark);
-    line-height: 1.15; margin-bottom: 16px;
+    font-weight: 300; color: var(--bark); line-height: 1.15; margin-bottom: 16px;
   }
   h1 em { font-style: italic; color: var(--green); }
-
   .subtitle {
     font-size: 15px; color: var(--text-mid); font-weight: 300;
     max-width: 420px; margin: 0 auto 20px; line-height: 1.65;
   }
-
   .event-meta {
     display: flex; align-items: center; justify-content: center;
     gap: 20px; flex-wrap: wrap; margin-top: 8px;
   }
-
   .meta-pill {
-    display: flex; align-items: center; gap: 7px;
-    font-size: 13px; color: var(--stone-dark);
-    background: white; border: 1px solid var(--stone-light);
+    display: flex; align-items: center; gap: 7px; font-size: 13px;
+    color: var(--stone-dark); background: white; border: 1px solid var(--stone-light);
     padding: 6px 14px; border-radius: 20px;
   }
   .meta-pill svg { width: 14px; height: 14px; }
 
-  .grid-container {
-    max-width: 1100px; margin: 0 auto; padding: 0 16px 80px;
-  }
-
+  .grid-container { max-width: 1100px; margin: 0 auto; padding: 0 16px 80px; }
   .therapist-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
   }
-
   .therapist-card {
-    background: var(--warm-white); border-radius: 20px;
-    overflow: hidden; box-shadow: var(--shadow);
-    border: 1px solid rgba(201,185,154,0.3);
+    background: var(--warm-white); border-radius: 20px; overflow: hidden;
+    box-shadow: var(--shadow); border: 1px solid rgba(201,185,154,0.3);
     transition: box-shadow 0.3s ease;
   }
   .therapist-card:hover { box-shadow: var(--shadow-hover); }
-
   .card-header {
-    padding: 20px 20px 16px;
-    border-bottom: 1px solid var(--stone-light);
-    position: relative;
+    padding: 20px 20px 16px; border-bottom: 1px solid var(--stone-light); position: relative;
   }
-
-  /* 3 female colours, 1 male */
   .card-header.female1 { background: linear-gradient(135deg, #fdf0ed 0%, #faf3f8 100%); }
   .card-header.female2 { background: linear-gradient(135deg, #fde8f0 0%, #faf0fb 100%); }
   .card-header.female3 { background: linear-gradient(135deg, #ece8f7 0%, #f3f0fb 100%); }
   .card-header.male1   { background: linear-gradient(135deg, #edf3f0 0%, #f0f4ee 100%); }
-
   .gender-dot {
     width: 8px; height: 8px; border-radius: 50%;
     display: inline-block; margin-right: 6px; vertical-align: middle;
@@ -149,233 +119,51 @@
   .female2 .gender-dot { background: #d4719e; }
   .female3 .gender-dot { background: var(--lavender); }
   .male1   .gender-dot { background: var(--green); }
-
   .therapist-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.25rem; font-weight: 600; color: var(--bark); margin-bottom: 2px;
   }
-
   .therapist-role {
-    font-size: 11px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--text-light); font-weight: 500;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-light); font-weight: 500;
   }
-
   .slots-count {
-    position: absolute; top: 20px; right: 20px;
-    font-size: 11px; color: var(--text-light);
-    background: white; border: 1px solid var(--stone-light);
-    padding: 3px 10px; border-radius: 20px;
+    position: absolute; top: 20px; right: 20px; font-size: 11px; color: var(--text-light);
+    background: white; border: 1px solid var(--stone-light); padding: 3px 10px; border-radius: 20px;
   }
   .slots-count span { color: var(--green); font-weight: 500; }
-
-  .slots-list {
-    padding: 14px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 7px;
-  }
-
+  .slots-list { padding: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
   .slot-btn {
-    padding: 9px 6px; border-radius: 10px;
-    border: 1.5px solid var(--stone-light);
-    background: white; font-family: 'DM Sans', sans-serif;
-    font-size: 12.5px; font-weight: 500; color: var(--bark);
-    cursor: pointer; transition: all 0.2s ease;
+    padding: 9px 6px; border-radius: 10px; border: 1.5px solid var(--stone-light);
+    background: white; font-family: 'DM Sans', sans-serif; font-size: 12.5px;
+    font-weight: 500; color: var(--bark); cursor: pointer; transition: all 0.2s ease;
     text-align: center; line-height: 1.3;
   }
-
   .slot-btn:hover:not(.booked):not(.mine) {
-    background: var(--green-pale); border-color: var(--green-light);
-    color: var(--green); transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(107,124,92,0.15);
+    background: var(--green-pale); border-color: var(--green-light); color: var(--green);
+    transform: translateY(-1px); box-shadow: 0 3px 10px rgba(107,124,92,0.15);
   }
-
   .slot-btn.booked {
     background: var(--booked-bg); border-color: var(--booked-bg);
     color: var(--booked-text); cursor: not-allowed; font-weight: 400;
   }
-
   .slot-btn.mine {
     background: var(--rose-pale); border-color: var(--rose);
     color: var(--rose-dark); cursor: pointer; font-weight: 500;
   }
   .slot-btn.mine:hover {
-    background: #f0dbd6; border-color: var(--rose-dark);
-    transform: translateY(-1px);
+    background: #f0dbd6; border-color: var(--rose-dark); transform: translateY(-1px);
     box-shadow: 0 3px 10px rgba(201,125,110,0.2);
   }
-
   .slot-sub {
-    display: block; font-size: 9px; letter-spacing: 0.05em;
-    text-transform: uppercase; margin-top: 2px;
+    display: block; font-size: 9px; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 2px;
   }
   .slot-btn.booked .slot-sub { color: var(--booked-text); }
   .slot-btn.mine .slot-sub   { color: var(--rose); }
 
-  /* OVERLAY & MODAL */
-  .overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(45,36,24,0.55);
-    backdrop-filter: blur(6px); z-index: 100;
-    align-items: center; justify-content: center; padding: 20px;
-  }
-  .overlay.active { display: flex; }
-
-  .modal {
-    background: var(--warm-white); border-radius: 24px;
-    padding: 36px 32px; width: 100%; max-width: 420px;
-    box-shadow: 0 20px 60px rgba(45,36,24,0.25);
-    animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    position: relative; max-height: 90vh; overflow-y: auto;
-  }
-
-  @keyframes modalIn {
-    from { opacity: 0; transform: scale(0.9) translateY(20px); }
-    to   { opacity: 1; transform: scale(1) translateY(0); }
-  }
-
-  .modal-close {
-    position: absolute; top: 16px; right: 16px;
-    background: var(--stone-light); border: none;
-    width: 30px; height: 30px; border-radius: 50%;
-    cursor: pointer; font-size: 16px; color: var(--text-mid);
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-  }
-  .modal-close:hover { background: var(--stone); }
-
-  .modal-eyebrow {
-    font-size: 11px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--green);
-    font-weight: 500; margin-bottom: 6px;
-  }
-
-  .modal h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.7rem; font-weight: 400; color: var(--bark); margin-bottom: 4px;
-  }
-
-  .modal-slot-info {
-    font-size: 13px; color: var(--text-mid);
-    margin-bottom: 24px; padding-bottom: 20px;
-    border-bottom: 1px solid var(--stone-light);
-  }
-
-  .form-group { margin-bottom: 16px; }
-
-  label {
-    display: block; font-size: 12px; font-weight: 500;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--text-mid); margin-bottom: 7px;
-  }
-
-  input[type="text"], input[type="tel"] {
-    width: 100%; padding: 12px 14px;
-    border: 1.5px solid var(--stone-light); border-radius: 12px;
-    font-family: 'DM Sans', sans-serif; font-size: 14px;
-    color: var(--text); background: white;
-    transition: border-color 0.2s, box-shadow 0.2s; outline: none;
-  }
-  input:focus {
-    border-color: var(--green-light);
-    box-shadow: 0 0 0 3px rgba(107,124,92,0.12);
-  }
-  input.error { border-color: var(--rose); }
-
-  .error-msg { font-size: 11px; color: var(--rose); margin-top: 5px; display: none; }
-  .error-msg.show { display: block; }
-
-  .screen { display: none; }
-  .screen.active { display: block; }
-
-  .btn-confirm {
-    width: 100%; padding: 14px;
-    background: var(--bark); color: white; border: none;
-    border-radius: 14px; font-family: 'DM Sans', sans-serif;
-    font-size: 14px; font-weight: 500; cursor: pointer;
-    margin-top: 8px; transition: background 0.2s, transform 0.15s;
-  }
-  .btn-confirm:hover { background: var(--bark-light); transform: translateY(-1px); }
-  .btn-confirm:disabled { background: var(--stone); cursor: not-allowed; transform: none; }
-
-  .center-content { text-align: center; padding: 10px 0; }
-
-  .icon-circle {
-    width: 64px; height: 64px; border-radius: 50%;
-    display: flex; align-items: center;
-    justify-content: center; margin: 0 auto 20px; font-size: 28px;
-    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;
-  }
-  .icon-green { background: var(--green-pale); }
-  .icon-rose  { background: var(--rose-pale); }
-
-  @keyframes popIn {
-    from { transform: scale(0); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
-
-  .center-content h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem; color: var(--bark); margin-bottom: 8px;
-  }
-  .center-content p {
-    font-size: 13.5px; color: var(--text-mid);
-    line-height: 1.6; margin-bottom: 20px;
-  }
-
-  .summary-box {
-    border-radius: 12px; padding: 14px 16px; margin-bottom: 20px;
-    text-align: left; font-size: 13px; color: var(--text-mid); line-height: 1.9;
-  }
-  .summary-green { background: var(--green-pale); }
-  .summary-rose  { background: var(--rose-pale); }
-  .summary-box strong { color: var(--bark); }
-
-  .manage-note {
-    font-size: 13px; color: var(--text-light);
-    margin-bottom: 16px; line-height: 1.5;
-  }
-
-  .btn-outline-rose {
-    width: 100%; padding: 13px;
-    background: var(--rose-pale); color: var(--rose-dark);
-    border: 1.5px solid var(--rose); border-radius: 14px;
-    font-family: 'DM Sans', sans-serif; font-size: 13.5px;
-    font-weight: 500; cursor: pointer; margin-bottom: 10px; transition: all 0.2s;
-  }
-  .btn-outline-rose:hover { background: #f0dbd6; }
-
-  .btn-outline {
-    width: 100%; padding: 13px; background: white;
-    color: var(--text-mid); border: 1.5px solid var(--stone-light);
-    border-radius: 14px; font-family: 'DM Sans', sans-serif;
-    font-size: 13.5px; font-weight: 400; cursor: pointer;
-    transition: all 0.2s; margin-bottom: 10px;
-  }
-  .btn-outline:hover { background: var(--cream); }
-
-  .btn-primary {
-    width: 100%; padding: 13px; background: var(--bark);
-    color: white; border: none; border-radius: 14px;
-    font-family: 'DM Sans', sans-serif; font-size: 13.5px;
-    font-weight: 500; cursor: pointer; transition: background 0.2s;
-    margin-bottom: 10px;
-  }
-  .btn-primary:hover { background: var(--bark-light); }
-
-  .btn-calendar {
-    width: 100%; padding: 13px; background: white;
-    color: var(--bark); border: 1.5px solid var(--stone-light);
-    border-radius: 14px; font-family: 'DM Sans', sans-serif;
-    font-size: 13.5px; font-weight: 500; cursor: pointer;
-    margin-bottom: 10px; transition: all 0.2s;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
-  .btn-calendar:hover { background: var(--green-pale); border-color: var(--green-light); }
-
-  /* LEGEND */
   .legend {
     display: flex; align-items: center; justify-content: center;
-    gap: 20px; flex-wrap: wrap;
-    margin-bottom: 20px; font-size: 12px; color: var(--text-mid);
+    gap: 20px; flex-wrap: wrap; margin-bottom: 20px; font-size: 12px; color: var(--text-mid);
   }
   .legend-item { display: flex; align-items: center; gap: 6px; }
   .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
@@ -383,9 +171,211 @@
   .legend-dot.taken     { background: var(--booked-bg); }
   .legend-dot.mine      { background: var(--rose-pale); border: 1.5px solid var(--rose); }
 
+  /* ── ADMIN PAGE ── */
+  #adminPage { display: none; padding: 40px 20px 80px; max-width: 1000px; margin: 0 auto; }
+
+  .admin-header {
+    text-align: center; margin-bottom: 40px;
+    padding-bottom: 24px; border-bottom: 2px solid var(--stone-light);
+  }
+  .admin-header .event-badge { margin-bottom: 12px; }
+  .admin-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300; color: var(--bark); margin-bottom: 6px;
+  }
+  .admin-header p { font-size: 13px; color: var(--text-light); }
+
+  .admin-stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px; margin-bottom: 32px;
+  }
+  .stat-card {
+    background: white; border-radius: 14px; padding: 16px;
+    border: 1px solid var(--stone-light); text-align: center;
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 600; color: var(--bark); line-height: 1;
+  }
+  .stat-label { font-size: 11px; color: var(--text-light); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* Admin table */
+  .admin-table-wrap { overflow-x: auto; border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 32px; }
+  table { width: 100%; border-collapse: collapse; background: white; font-size: 13px; }
+  thead th {
+    padding: 14px 16px; text-align: left; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light);
+    background: var(--cream); border-bottom: 1px solid var(--stone-light);
+    white-space: nowrap;
+  }
+  thead th:first-child { border-radius: 16px 0 0 0; }
+  thead th:last-child  { border-radius: 0 16px 0 0; }
+  tbody tr { border-bottom: 1px solid var(--stone-light); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--cream); }
+  tbody td { padding: 11px 16px; color: var(--text-mid); vertical-align: middle; }
+  tbody td:first-child { font-weight: 600; color: var(--bark); font-size: 13px; }
+
+  .cell-booked {
+    background: var(--green-pale); color: var(--green);
+    border-radius: 8px; padding: 4px 10px; font-size: 12px;
+    font-weight: 500; display: inline-block; white-space: nowrap;
+  }
+  .cell-empty {
+    color: var(--booked-text); font-size: 12px;
+  }
+
+  /* Therapist booking cards in admin */
+  .admin-therapist-section { margin-bottom: 28px; }
+  .admin-therapist-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600; color: var(--bark);
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .admin-therapist-dot {
+    width: 10px; height: 10px; border-radius: 50%; display: inline-block;
+  }
+
+  .booking-list { display: flex; flex-direction: column; gap: 8px; }
+  .booking-row {
+    background: white; border-radius: 12px; padding: 12px 16px;
+    border: 1px solid var(--stone-light);
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .booking-time {
+    font-size: 13px; font-weight: 600; color: var(--bark);
+    min-width: 80px;
+  }
+  .booking-name { font-size: 13px; color: var(--text); flex: 1; }
+  .booking-phone { font-size: 12px; color: var(--text-light); }
+  .no-bookings {
+    font-size: 13px; color: var(--text-light); font-style: italic; padding: 12px 0;
+  }
+
+  .admin-refresh {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    font-size: 12px; color: var(--text-light); margin-bottom: 24px;
+  }
+
+  .btn-refresh {
+    background: white; border: 1px solid var(--stone-light); color: var(--text-mid);
+    padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; transition: all 0.2s;
+  }
+  .btn-refresh:hover { background: var(--green-pale); border-color: var(--green-light); }
+
+  /* MODAL */
+  .overlay {
+    display: none; position: fixed; inset: 0; background: rgba(45,36,24,0.55);
+    backdrop-filter: blur(6px); z-index: 100;
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .overlay.active { display: flex; }
+  .modal {
+    background: var(--warm-white); border-radius: 24px; padding: 36px 32px;
+    width: 100%; max-width: 420px; box-shadow: 0 20px 60px rgba(45,36,24,0.25);
+    animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    position: relative; max-height: 90vh; overflow-y: auto;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px; background: var(--stone-light); border: none;
+    width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 16px;
+    color: var(--text-mid); display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: var(--stone); }
+  .modal-eyebrow {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--green); font-weight: 500; margin-bottom: 6px;
+  }
+  .modal h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem; font-weight: 400; color: var(--bark); margin-bottom: 4px;
+  }
+  .modal-slot-info {
+    font-size: 13px; color: var(--text-mid); margin-bottom: 24px;
+    padding-bottom: 20px; border-bottom: 1px solid var(--stone-light);
+  }
+  .form-group { margin-bottom: 16px; }
+  label {
+    display: block; font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--text-mid); margin-bottom: 7px;
+  }
+  input[type="text"], input[type="tel"] {
+    width: 100%; padding: 12px 14px; border: 1.5px solid var(--stone-light);
+    border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 14px;
+    color: var(--text); background: white; transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+  }
+  input:focus { border-color: var(--green-light); box-shadow: 0 0 0 3px rgba(107,124,92,0.12); }
+  input.error { border-color: var(--rose); }
+  .error-msg { font-size: 11px; color: var(--rose); margin-top: 5px; display: none; }
+  .error-msg.show { display: block; }
+  .screen { display: none; }
+  .screen.active { display: block; }
+  .btn-confirm {
+    width: 100%; padding: 14px; background: var(--bark); color: white; border: none;
+    border-radius: 14px; font-family: 'DM Sans', sans-serif; font-size: 14px;
+    font-weight: 500; cursor: pointer; margin-top: 8px; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-confirm:hover { background: var(--bark-light); transform: translateY(-1px); }
+  .btn-confirm:disabled { background: var(--stone); cursor: not-allowed; transform: none; }
+  .center-content { text-align: center; padding: 10px 0; }
+  .icon-circle {
+    width: 64px; height: 64px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; font-size: 28px;
+    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;
+  }
+  .icon-green { background: var(--green-pale); }
+  .icon-rose  { background: var(--rose-pale); }
+  @keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+  .center-content h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--bark); margin-bottom: 8px;
+  }
+  .center-content p { font-size: 13.5px; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; }
+  .summary-box {
+    border-radius: 12px; padding: 14px 16px; margin-bottom: 20px;
+    text-align: left; font-size: 13px; color: var(--text-mid); line-height: 1.9;
+  }
+  .summary-green { background: var(--green-pale); }
+  .summary-rose  { background: var(--rose-pale); }
+  .summary-box strong { color: var(--bark); }
+  .manage-note { font-size: 13px; color: var(--text-light); margin-bottom: 16px; line-height: 1.5; }
+  .btn-outline-rose {
+    width: 100%; padding: 13px; background: var(--rose-pale); color: var(--rose-dark);
+    border: 1.5px solid var(--rose); border-radius: 14px; font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px; font-weight: 500; cursor: pointer; margin-bottom: 10px; transition: all 0.2s;
+  }
+  .btn-outline-rose:hover { background: #f0dbd6; }
+  .btn-outline {
+    width: 100%; padding: 13px; background: white; color: var(--text-mid);
+    border: 1.5px solid var(--stone-light); border-radius: 14px; font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px; font-weight: 400; cursor: pointer; transition: all 0.2s; margin-bottom: 10px;
+  }
+  .btn-outline:hover { background: var(--cream); }
+  .btn-primary {
+    width: 100%; padding: 13px; background: var(--bark); color: white; border: none;
+    border-radius: 14px; font-family: 'DM Sans', sans-serif; font-size: 13.5px;
+    font-weight: 500; cursor: pointer; transition: background 0.2s; margin-bottom: 10px;
+  }
+  .btn-primary:hover { background: var(--bark-light); }
+  .btn-calendar {
+    width: 100%; padding: 13px; background: white; color: var(--bark);
+    border: 1.5px solid var(--stone-light); border-radius: 14px; font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px; font-weight: 500; cursor: pointer; margin-bottom: 10px; transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-calendar:hover { background: var(--green-pale); border-color: var(--green-light); }
+
   footer {
-    text-align: center; padding: 24px;
-    font-size: 12px; color: var(--text-light);
+    text-align: center; padding: 24px; font-size: 12px; color: var(--text-light);
     border-top: 1px solid var(--stone-light);
   }
 
@@ -394,6 +384,7 @@
     .therapist-grid { grid-template-columns: 1fr; }
     .modal { padding: 28px 22px; }
     .slots-list { grid-template-columns: repeat(3, 1fr); }
+    .admin-stats { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -404,34 +395,73 @@
   <div class="loading-text">Loading bookings…</div>
 </div>
 
-<header>
-  <div class="header-line"></div>
-  <div class="event-badge">✦ Staff Appreciation Event</div>
-  <h1>Reflexology <em>Bookings</em></h1>
-  <p class="subtitle">Take some time to rest and unwind for 15 minutes 😊</p>
-  <div class="event-meta">
-    <div class="meta-pill">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Monday, 20 April 2026
+<!-- ── BOOKING PAGE ── -->
+<div id="bookingPage">
+  <header>
+    <div class="header-line"></div>
+    <div class="event-badge">✦ Staff Appreciation Event</div>
+    <h1>Reflexology <em>Bookings</em></h1>
+    <p class="subtitle">Take some time to rest and unwind for 15 minutes 😊</p>
+    <div class="event-meta">
+      <div class="meta-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Monday, 20 April 2026
+      </div>
+      <div class="meta-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        8:30 – 14:30
+      </div>
+      <div class="meta-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        4 Therapists
+      </div>
     </div>
-    <div class="meta-pill">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      8:30 – 14:30
-    </div>
-    <div class="meta-pill">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      4 Therapists
-    </div>
-  </div>
-</header>
+  </header>
 
-<div class="grid-container">
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot available"></div> Available</div>
-    <div class="legend-item"><div class="legend-dot taken"></div> Taken</div>
-    <div class="legend-item"><div class="legend-dot mine"></div> Your booking</div>
+  <div class="grid-container">
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot available"></div> Available</div>
+      <div class="legend-item"><div class="legend-dot taken"></div> Taken</div>
+      <div class="legend-item"><div class="legend-dot mine"></div> Your booking</div>
+    </div>
+    <div class="therapist-grid" id="therapistGrid"></div>
   </div>
-  <div class="therapist-grid" id="therapistGrid"></div>
+</div>
+
+<!-- ── ADMIN PAGE ── -->
+<div id="adminPage">
+  <div class="admin-header">
+    <div class="event-badge">✦ Admin View</div>
+    <h2>Reflexology Bookings</h2>
+    <p>Monday, 20 April 2026 &nbsp;·&nbsp; 8:30 – 14:30 &nbsp;·&nbsp; Staff Appreciation Event</p>
+  </div>
+
+  <div class="admin-refresh">
+    <span id="lastUpdated">Live updates enabled</span>
+    <button class="btn-refresh" onclick="renderAdmin()">↻ Refresh</button>
+  </div>
+
+  <!-- Summary stats -->
+  <div class="admin-stats" id="adminStats"></div>
+
+  <!-- Full schedule table -->
+  <div class="admin-table-wrap">
+    <table id="adminTable">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Female Therapist 1</th>
+          <th>Female Therapist 2</th>
+          <th>Female Therapist 3</th>
+          <th>Male Therapist 1</th>
+        </tr>
+      </thead>
+      <tbody id="adminTableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Bookings by therapist -->
+  <div id="adminByTherapist"></div>
 </div>
 
 <!-- MODAL -->
@@ -498,11 +528,10 @@
         <button class="btn-primary" onclick="closeModal()">Close</button>
       </div>
     </div>
-
   </div>
 </div>
 
-<footer>
+<footer id="pageFooter">
   Reflexology Bookings · Staff Appreciation Event · 20 April 2026
 </footer>
 
@@ -527,12 +556,11 @@
   const EVENT_DATE         = '2026-04-20';
   const EVENT_DATE_DISPLAY = 'Monday, 20 April 2026';
 
-  // ── Updated therapist list ────────────────────────────────
   const THERAPISTS = [
-    { id: 'f1', name: 'Female Therapist 1', gender: 'female1' },
-    { id: 'f2', name: 'Female Therapist 2', gender: 'female2' },
-    { id: 'f3', name: 'Female Therapist 3', gender: 'female3' },
-    { id: 'm1', name: 'Male Therapist 1',   gender: 'male1'   },
+    { id: 'f1', name: 'Female Therapist 1', gender: 'female1', dotColor: '#c97d6e' },
+    { id: 'f2', name: 'Female Therapist 2', gender: 'female2', dotColor: '#d4719e' },
+    { id: 'f3', name: 'Female Therapist 3', gender: 'female3', dotColor: '#9b8bb4' },
+    { id: 'm1', name: 'Male Therapist 1',   gender: 'male1',   dotColor: '#6b7c5c' },
   ];
 
   function generateSlots() {
@@ -566,11 +594,26 @@
   const SESSION_ID = getSessionId();
   let bookings = {};
 
+  // ── Check if admin mode ───────────────────────────────────
+  const isAdmin = new URLSearchParams(window.location.search).get('admin') === 'true';
+
+  if (isAdmin) {
+    document.getElementById('bookingPage').style.display = 'none';
+    document.getElementById('adminPage').style.display   = 'block';
+  }
+
+  // ── Firebase live listener ────────────────────────────────
   const bookingsRef = ref(db, 'bookings');
   onValue(bookingsRef, (snapshot) => {
     bookings = snapshot.val() || {};
-    renderAll();
+    if (isAdmin) {
+      renderAdmin();
+    } else {
+      renderAll();
+    }
     hideLoading();
+    const lu = document.getElementById('lastUpdated');
+    if (lu) lu.textContent = 'Last updated: ' + new Date().toLocaleTimeString();
   });
 
   function hideLoading() {
@@ -579,6 +622,7 @@
     setTimeout(() => ls.style.display = 'none', 400);
   }
 
+  // ── BOOKING PAGE RENDER ───────────────────────────────────
   function countAvailable(tid) {
     return SLOTS.filter(s => !bookings[`${tid}_${s.id}`]).length;
   }
@@ -611,7 +655,6 @@
       const booking = bookings[key];
       const mine    = booking && booking.sessionId === SESSION_ID;
       const btn     = document.createElement('button');
-
       if (!booking) {
         btn.className = 'slot-btn';
         btn.innerHTML = `<span class="slot-time">${s.label}</span>`;
@@ -625,11 +668,95 @@
         btn.disabled  = true;
         btn.innerHTML = `<span class="slot-time">${s.label}</span><span class="slot-sub">Taken</span>`;
       }
-
       container.appendChild(btn);
     });
   }
 
+  // ── ADMIN PAGE RENDER ─────────────────────────────────────
+  window.renderAdmin = function() {
+    const totalSlots  = THERAPISTS.length * SLOTS.length;
+    const totalBooked = Object.keys(bookings).length;
+    const totalFree   = totalSlots - totalBooked;
+
+    // Stats
+    const statsEl = document.getElementById('adminStats');
+    statsEl.innerHTML = `
+      <div class="stat-card">
+        <div class="stat-number" style="color:var(--green)">${totalBooked}</div>
+        <div class="stat-label">Booked</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="color:var(--stone-dark)">${totalFree}</div>
+        <div class="stat-label">Available</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">${totalSlots}</div>
+        <div class="stat-label">Total Slots</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="color:var(--rose)">${Math.round((totalBooked/totalSlots)*100)}%</div>
+        <div class="stat-label">Filled</div>
+      </div>
+    `;
+
+    // Table — rows = time slots, cols = therapists
+    const tbody = document.getElementById('adminTableBody');
+    tbody.innerHTML = '';
+    SLOTS.forEach(s => {
+      const tr = document.createElement('tr');
+      let cells = `<td>${s.label} – ${s.end}</td>`;
+      THERAPISTS.forEach(t => {
+        const booking = bookings[`${t.id}_${s.id}`];
+        if (booking) {
+          cells += `<td><span class="cell-booked">✓ ${booking.name}</span></td>`;
+        } else {
+          cells += `<td><span class="cell-empty">—</span></td>`;
+        }
+      });
+      tr.innerHTML = cells;
+      tbody.appendChild(tr);
+    });
+
+    // By therapist breakdown
+    const byT = document.getElementById('adminByTherapist');
+    byT.innerHTML = '';
+    THERAPISTS.forEach(t => {
+      const myBookings = SLOTS
+        .map(s => ({ slot: s, booking: bookings[`${t.id}_${s.id}`] }))
+        .filter(x => x.booking);
+
+      const section = document.createElement('div');
+      section.className = 'admin-therapist-section';
+      section.innerHTML = `
+        <div class="admin-therapist-title">
+          <span class="admin-therapist-dot" style="background:${t.dotColor}"></span>
+          ${t.name}
+          <span style="font-size:13px; font-weight:400; color:var(--text-light); font-family:'DM Sans',sans-serif;">
+            — ${myBookings.length} of ${SLOTS.length} slots booked
+          </span>
+        </div>
+        <div class="booking-list" id="blist_${t.id}"></div>
+      `;
+      byT.appendChild(section);
+
+      const list = section.querySelector(`#blist_${t.id}`);
+      if (myBookings.length === 0) {
+        list.innerHTML = '<div class="no-bookings">No bookings yet</div>';
+      } else {
+        myBookings.forEach(({ slot, booking }) => {
+          list.innerHTML += `
+            <div class="booking-row">
+              <div class="booking-time">${slot.label} – ${slot.end}</div>
+              <div class="booking-name">👤 ${booking.name}</div>
+              <div class="booking-phone">📞 ${booking.phone}</div>
+            </div>
+          `;
+        });
+      }
+    });
+  };
+
+  // ── MODAL ─────────────────────────────────────────────────
   let curT = null, curS = null;
 
   window.showScreen = function(id) {
@@ -663,7 +790,6 @@
     const name  = document.getElementById('inputName').value.trim();
     const phone = document.getElementById('inputPhone').value.trim();
     let valid   = true;
-
     if (!name) {
       document.getElementById('inputName').classList.add('error');
       document.getElementById('nameError').classList.add('show');
@@ -672,7 +798,6 @@
       document.getElementById('inputName').classList.remove('error');
       document.getElementById('nameError').classList.remove('show');
     }
-
     if (!phone) {
       document.getElementById('inputPhone').classList.add('error');
       document.getElementById('phoneError').classList.add('show');
@@ -681,12 +806,9 @@
       document.getElementById('inputPhone').classList.remove('error');
       document.getElementById('phoneError').classList.remove('show');
     }
-
     if (!valid) return;
-
     const btn = document.getElementById('btnConfirm');
     btn.disabled = true; btn.textContent = 'Saving…';
-
     const key = `${curT.id}_${curS.id}`;
     const snap = await get(ref(db, `bookings/${key}`));
     if (snap.exists()) {
@@ -694,15 +816,10 @@
       btn.disabled = false; btn.textContent = 'Confirm Booking';
       window.closeModal(); return;
     }
-
     await set(ref(db, `bookings/${key}`), {
-      name, phone,
-      sessionId: SESSION_ID,
-      bookedAt: new Date().toISOString()
+      name, phone, sessionId: SESSION_ID, bookedAt: new Date().toISOString()
     });
-
     btn.disabled = false; btn.textContent = 'Confirm Booking';
-
     document.getElementById('successSummary').innerHTML = `
       <strong>Name:</strong> ${name}<br>
       <strong>Phone:</strong> ${phone}<br>
@@ -710,14 +827,12 @@
       <strong>Time:</strong> ${curS.label} – ${curS.end}<br>
       <strong>Date:</strong> ${EVENT_DATE_DISPLAY}
     `;
-
     window.showScreen('screenSuccess');
   };
 
   function openManageModal(therapist, slot) {
     curT = therapist; curS = slot;
-    const key     = `${therapist.id}_${slot.id}`;
-    const booking = bookings[key];
+    const booking = bookings[`${therapist.id}_${slot.id}`];
     document.getElementById('manageTherapist').textContent = therapist.name;
     document.getElementById('manageSlotInfo').textContent  = `${slot.label} – ${slot.end}  ·  ${EVENT_DATE_DISPLAY}`;
     document.getElementById('manageSummary').innerHTML = `
@@ -734,19 +849,13 @@
     const key     = `${curT.id}_${curS.id}`;
     const booking = bookings[key];
     const stored  = (booking?.name || '').trim().toLowerCase();
-
     if (!entered || entered !== stored) {
-      document.getElementById('verifyError').classList.add('show');
-      return;
+      document.getElementById('verifyError').classList.add('show'); return;
     }
-
     document.getElementById('verifyError').classList.remove('show');
-
     const btn = document.getElementById('btnCancelConfirm');
     btn.disabled = true; btn.textContent = 'Cancelling…';
-
     await remove(ref(db, `bookings/${key}`));
-
     btn.disabled = false; btn.textContent = 'Yes, cancel my booking';
     window.showScreen('screenCancelled');
   };
@@ -759,8 +868,7 @@
     const d   = EVENT_DATE.replace(/-/g,'');
     const ics = [
       'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Reflexology Bookings//EN',
-      'BEGIN:VEVENT',
-      `UID:${Date.now()}@reflexology`,
+      'BEGIN:VEVENT',`UID:${Date.now()}@reflexology`,
       `DTSTART;TZID=Europe/London:${d}T${pad(sh)}${pad(sm)}00`,
       `DTEND;TZID=Europe/London:${d}T${pad(eh)}${pad(em)}00`,
       'SUMMARY:Reflexology Session – Staff Appreciation Event',
@@ -776,7 +884,6 @@
     a.href = url; a.download = 'reflexology-session.ics'; a.click();
     URL.revokeObjectURL(url);
   };
-
 </script>
 </body>
 </html>
