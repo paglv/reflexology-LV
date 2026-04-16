@@ -41,6 +41,34 @@
       radial-gradient(ellipse at 80% 100%, rgba(107,124,92,0.12) 0%, transparent 60%);
   }
 
+  /* LOADING SCREEN */
+  .loading-screen {
+    position: fixed; inset: 0;
+    background: var(--cream);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    z-index: 200; gap: 16px;
+    transition: opacity 0.4s ease;
+  }
+
+  .loading-screen.hidden { opacity: 0; pointer-events: none; }
+
+  .spinner {
+    width: 36px; height: 36px;
+    border: 3px solid var(--stone-light);
+    border-top-color: var(--green);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--text-mid);
+    font-style: italic;
+  }
+
   header {
     text-align: center;
     padding: 56px 24px 40px;
@@ -272,13 +300,14 @@
     margin-top: 8px; transition: background 0.2s, transform 0.15s;
   }
   .btn-confirm:hover { background: var(--bark-light); transform: translateY(-1px); }
+  .btn-confirm:disabled { background: var(--stone); cursor: not-allowed; transform: none; }
 
   .center-content { text-align: center; padding: 10px 0; }
 
   .icon-circle {
     width: 64px; height: 64px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px; font-size: 28px;
+    display: flex; align-items: center;
+    justify-content: center; margin: 0 auto 20px; font-size: 28px;
     animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;
   }
   .icon-green { background: var(--green-pale); }
@@ -355,9 +384,7 @@
     margin-bottom: 20px; font-size: 12px; color: var(--text-mid);
   }
   .legend-item { display: flex; align-items: center; gap: 6px; }
-  .legend-dot {
-    width: 12px; height: 12px; border-radius: 3px;
-  }
+  .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
   .legend-dot.available { background: white; border: 1.5px solid var(--stone-light); }
   .legend-dot.taken     { background: var(--booked-bg); }
   .legend-dot.mine      { background: var(--rose-pale); border: 1.5px solid var(--rose); }
@@ -377,6 +404,12 @@
 </style>
 </head>
 <body>
+
+<!-- Loading screen -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="spinner"></div>
+  <div class="loading-text">Loading bookings…</div>
+</div>
 
 <header>
   <div class="header-line"></div>
@@ -428,10 +461,10 @@
         <input type="tel" id="inputPhone" placeholder="e.g. 07700 900000" autocomplete="tel">
         <div class="error-msg" id="phoneError">Please enter your phone number</div>
       </div>
-      <button class="btn-confirm" onclick="confirmBooking()">Confirm Booking</button>
+      <button class="btn-confirm" id="btnConfirm" onclick="confirmBooking()">Confirm Booking</button>
     </div>
 
-    <!-- SCREEN 2: Booked success -->
+    <!-- SCREEN 2: Success -->
     <div class="screen" id="screenSuccess">
       <div class="center-content">
         <div class="icon-circle icon-green">🌿</div>
@@ -443,18 +476,18 @@
       </div>
     </div>
 
-    <!-- SCREEN 3: Manage existing booking -->
+    <!-- SCREEN 3: Manage -->
     <div class="screen" id="screenManage">
       <div class="modal-eyebrow">Your booking</div>
       <h2 id="manageTherapist"></h2>
       <div class="modal-slot-info" id="manageSlotInfo"></div>
       <div class="summary-box summary-rose" id="manageSummary"></div>
-      <p class="manage-note">Want to change your slot? Cancel below and then rebook a different time.</p>
+      <p class="manage-note">Want to change your slot? Cancel below and rebook a different time.</p>
       <button class="btn-outline-rose" onclick="showScreen('screenVerify')">Cancel this booking</button>
       <button class="btn-outline" onclick="closeModal()">Keep my booking</button>
     </div>
 
-    <!-- SCREEN 4: Verify identity -->
+    <!-- SCREEN 4: Verify -->
     <div class="screen" id="screenVerify">
       <div class="modal-eyebrow">Confirm it's you</div>
       <h2>Enter your name</h2>
@@ -464,11 +497,11 @@
         <input type="text" id="verifyName" placeholder="Enter your name">
         <div class="error-msg" id="verifyError">Name doesn't match. Please try again.</div>
       </div>
-      <button class="btn-confirm" style="background:var(--rose); margin-bottom:10px;" onclick="confirmCancel()">Yes, cancel my booking</button>
+      <button class="btn-confirm" style="background:var(--rose); margin-bottom:10px;" id="btnCancelConfirm" onclick="confirmCancel()">Yes, cancel my booking</button>
       <button class="btn-outline" onclick="showScreen('screenManage')">Go back</button>
     </div>
 
-    <!-- SCREEN 5: Cancelled confirmation -->
+    <!-- SCREEN 5: Cancelled -->
     <div class="screen" id="screenCancelled">
       <div class="center-content">
         <div class="icon-circle icon-rose">✓</div>
@@ -485,7 +518,27 @@
   Reflexology Bookings · Staff Appreciation Event · 20 April 2026
 </footer>
 
-<script>
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp }          from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+  import { getDatabase, ref, set, remove, onValue, get }
+    from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+
+  // ── FIREBASE CONFIG ──────────────────────────────────────
+  const firebaseConfig = {
+    apiKey: "AIzaSyArzGldUUm_EHyFdG1ox-ydrhhXHmNhLIg",
+    authDomain: "reflexology-lv.firebaseapp.com",
+    databaseURL: "https://reflexology-lv-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "reflexology-lv",
+    storageBucket: "reflexology-lv.firebasestorage.app",
+    messagingSenderId: "1000005770253",
+    appId: "1:1000005770253:web:5a753c78e1072a3bcdc944"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getDatabase(app);
+
+  // ── CONFIG ───────────────────────────────────────────────
   const EVENT_DATE         = '2026-04-20';
   const EVENT_DATE_DISPLAY = 'Monday, 20 April 2026';
 
@@ -514,46 +567,41 @@
   }
 
   const SLOTS = generateSlots();
-  const STORE = 'rbooking_';
 
-  function getBooking(tid, sid) {
-    try { return JSON.parse(localStorage.getItem(`${STORE}${tid}_${sid}`)); }
-    catch { return null; }
+  // ── SESSION IDENTITY ─────────────────────────────────────
+  // Each browser session gets a unique ID so users can identify their own bookings
+  function getSessionId() {
+    let sid = sessionStorage.getItem('reflexSessionId');
+    if (!sid) {
+      sid = 'sess_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+      sessionStorage.setItem('reflexSessionId', sid);
+    }
+    return sid;
   }
 
-  function saveBooking(tid, sid, data) {
-    localStorage.setItem(`${STORE}${tid}_${sid}`, JSON.stringify(data));
+  const SESSION_ID = getSessionId();
+
+  // ── LIVE DATA ────────────────────────────────────────────
+  // bookings = { "f1_0830": { name, phone, sessionId }, ... }
+  let bookings = {};
+
+  // Listen to Firebase in real time — updates everyone's page instantly
+  const bookingsRef = ref(db, 'bookings');
+  onValue(bookingsRef, (snapshot) => {
+    bookings = snapshot.val() || {};
+    renderAll();
+    hideLoading();
+  });
+
+  function hideLoading() {
+    const ls = document.getElementById('loadingScreen');
+    ls.classList.add('hidden');
+    setTimeout(() => ls.style.display = 'none', 400);
   }
 
-  function deleteBooking(tid, sid) {
-    localStorage.removeItem(`${STORE}${tid}_${sid}`);
-  }
-
-  // Session tracking — identifies this user's own bookings within the same browser session
-  function getMyBookings() {
-    try { return JSON.parse(sessionStorage.getItem('myBookings') || '[]'); }
-    catch { return []; }
-  }
-
-  function addMyBooking(tid, sid) {
-    const mine = getMyBookings();
-    const key = `${tid}_${sid}`;
-    if (!mine.includes(key)) mine.push(key);
-    sessionStorage.setItem('myBookings', JSON.stringify(mine));
-  }
-
-  function removeMyBooking(tid, sid) {
-    const mine = getMyBookings().filter(k => k !== `${tid}_${sid}`);
-    sessionStorage.setItem('myBookings', JSON.stringify(mine));
-  }
-
-  function isMyBooking(tid, sid) {
-    return getMyBookings().includes(`${tid}_${sid}`);
-  }
-
-  // ── RENDER ────────────────────────────────────────────────
+  // ── RENDER ───────────────────────────────────────────────
   function countAvailable(tid) {
-    return SLOTS.filter(s => !getBooking(tid, s.id)).length;
+    return SLOTS.filter(s => !bookings[`${tid}_${s.id}`]).length;
   }
 
   function renderAll() {
@@ -561,7 +609,7 @@
     grid.innerHTML = '';
     THERAPISTS.forEach(t => {
       const avail = countAvailable(t.id);
-      const card = document.createElement('div');
+      const card  = document.createElement('div');
       card.className = 'therapist-card';
       card.innerHTML = `
         <div class="card-header ${t.gender}">
@@ -580,8 +628,9 @@
     const container = document.getElementById(`slots_${t.id}`);
     container.innerHTML = '';
     SLOTS.forEach(s => {
-      const booking = getBooking(t.id, s.id);
-      const mine    = isMyBooking(t.id, s.id);
+      const key     = `${t.id}_${s.id}`;
+      const booking = bookings[key];
+      const mine    = booking && booking.sessionId === SESSION_ID;
       const btn     = document.createElement('button');
 
       if (!booking) {
@@ -602,23 +651,24 @@
     });
   }
 
-  // ── MODAL ─────────────────────────────────────────────────
+  // ── MODAL HELPERS ────────────────────────────────────────
   let curT = null, curS = null;
 
-  function showScreen(id) {
+  window.showScreen = function(id) {
     document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-  }
+  };
 
-  function closeModal() {
+  window.closeModal = function() {
     document.getElementById('overlay').classList.remove('active');
     curT = null; curS = null;
-  }
+  };
 
   document.getElementById('overlay').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
+    if (e.target === this) window.closeModal();
   });
 
+  // ── BOOK ─────────────────────────────────────────────────
   function openBookModal(therapist, slot) {
     curT = therapist; curS = slot;
     document.getElementById('bookTherapist').textContent = therapist.name;
@@ -627,12 +677,12 @@
     document.getElementById('inputPhone').value = '';
     ['inputName','inputPhone'].forEach(id => document.getElementById(id).classList.remove('error'));
     ['nameError','phoneError'].forEach(id => document.getElementById(id).classList.remove('show'));
-    showScreen('screenBook');
+    window.showScreen('screenBook');
     document.getElementById('overlay').classList.add('active');
     setTimeout(() => document.getElementById('inputName').focus(), 300);
   }
 
-  function confirmBooking() {
+  window.confirmBooking = async function() {
     const name  = document.getElementById('inputName').value.trim();
     const phone = document.getElementById('inputPhone').value.trim();
     let valid   = true;
@@ -657,13 +707,28 @@
 
     if (!valid) return;
 
-    if (getBooking(curT.id, curS.id)) {
+    const btn = document.getElementById('btnConfirm');
+    btn.disabled    = true;
+    btn.textContent = 'Saving…';
+
+    const key = `${curT.id}_${curS.id}`;
+
+    // Check slot is still free before saving
+    const snap = await get(ref(db, `bookings/${key}`));
+    if (snap.exists()) {
       alert('Sorry, this slot was just taken by someone else. Please choose another time.');
-      closeModal(); renderAll(); return;
+      btn.disabled = false; btn.textContent = 'Confirm Booking';
+      window.closeModal(); return;
     }
 
-    saveBooking(curT.id, curS.id, { name, phone });
-    addMyBooking(curT.id, curS.id);
+    await set(ref(db, `bookings/${key}`), {
+      name,
+      phone,
+      sessionId: SESSION_ID,
+      bookedAt: new Date().toISOString()
+    });
+
+    btn.disabled = false; btn.textContent = 'Confirm Booking';
 
     document.getElementById('successSummary').innerHTML = `
       <strong>Name:</strong> ${name}<br>
@@ -673,13 +738,14 @@
       <strong>Date:</strong> ${EVENT_DATE_DISPLAY}
     `;
 
-    showScreen('screenSuccess');
-    renderAll();
-  }
+    window.showScreen('screenSuccess');
+  };
 
+  // ── MANAGE / CANCEL ──────────────────────────────────────
   function openManageModal(therapist, slot) {
     curT = therapist; curS = slot;
-    const booking = getBooking(therapist.id, slot.id);
+    const key     = `${therapist.id}_${slot.id}`;
+    const booking = bookings[key];
     document.getElementById('manageTherapist').textContent = therapist.name;
     document.getElementById('manageSlotInfo').textContent  = `${slot.label} – ${slot.end}  ·  ${EVENT_DATE_DISPLAY}`;
     document.getElementById('manageSummary').innerHTML = `
@@ -687,13 +753,14 @@
       <strong>Phone:</strong> ${booking?.phone || '—'}<br>
       <strong>Time:</strong> ${slot.label} – ${slot.end}
     `;
-    showScreen('screenManage');
+    window.showScreen('screenManage');
     document.getElementById('overlay').classList.add('active');
   }
 
-  function confirmCancel() {
+  window.confirmCancel = async function() {
     const entered = document.getElementById('verifyName').value.trim().toLowerCase();
-    const booking = getBooking(curT.id, curS.id);
+    const key     = `${curT.id}_${curS.id}`;
+    const booking = bookings[key];
     const stored  = (booking?.name || '').trim().toLowerCase();
 
     if (!entered || entered !== stored) {
@@ -702,13 +769,19 @@
     }
 
     document.getElementById('verifyError').classList.remove('show');
-    deleteBooking(curT.id, curS.id);
-    removeMyBooking(curT.id, curS.id);
-    showScreen('screenCancelled');
-    renderAll();
-  }
 
-  function addToCalendar() {
+    const btn = document.getElementById('btnCancelConfirm');
+    btn.disabled    = true;
+    btn.textContent = 'Cancelling…';
+
+    await remove(ref(db, `bookings/${key}`));
+
+    btn.disabled = false; btn.textContent = 'Yes, cancel my booking';
+    window.showScreen('screenCancelled');
+  };
+
+  // ── CALENDAR ─────────────────────────────────────────────
+  window.addToCalendar = function() {
     if (!curT || !curS) return;
     const [sh, sm] = curS.label.split(':').map(Number);
     const [eh, em] = curS.end.split(':').map(Number);
@@ -732,10 +805,8 @@
     const a    = document.createElement('a');
     a.href = url; a.download = 'reflexology-session.ics'; a.click();
     URL.revokeObjectURL(url);
-  }
+  };
 
-  renderAll();
-  setInterval(renderAll, 30000);
 </script>
 </body>
 </html>
