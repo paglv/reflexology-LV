@@ -19,11 +19,12 @@
     --green-pale: #e8eed8;
     --rose: #c97d6e;
     --rose-pale: #f5e8e4;
+    --rose-dark: #a85d50;
     --text: #2d2418;
     --text-mid: #6b5d4f;
     --text-light: #9c8e82;
-    --booked: #d9d3cc;
-    --booked-text: #b0a89f;
+    --booked-bg: #ede8e2;
+    --booked-text: #a09690;
     --shadow: 0 4px 24px rgba(92,74,53,0.10);
     --shadow-hover: 0 8px 36px rgba(92,74,53,0.18);
   }
@@ -40,87 +41,55 @@
       radial-gradient(ellipse at 80% 100%, rgba(107,124,92,0.12) 0%, transparent 60%);
   }
 
-  /* HEADER */
   header {
     text-align: center;
     padding: 56px 24px 40px;
-    position: relative;
-    overflow: hidden;
   }
 
   .header-line {
-    width: 60px;
-    height: 1px;
+    width: 60px; height: 1px;
     background: var(--stone);
     margin: 0 auto 24px;
   }
 
   .event-badge {
     display: inline-block;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--green);
-    background: var(--green-pale);
-    padding: 6px 16px;
-    border-radius: 20px;
-    margin-bottom: 20px;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--green); background: var(--green-pale);
+    padding: 6px 16px; border-radius: 20px; margin-bottom: 20px;
   }
 
   h1 {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 300;
-    color: var(--bark);
-    line-height: 1.15;
-    margin-bottom: 16px;
-    letter-spacing: -0.01em;
+    font-weight: 300; color: var(--bark);
+    line-height: 1.15; margin-bottom: 16px;
   }
 
-  h1 em {
-    font-style: italic;
-    color: var(--green);
-  }
+  h1 em { font-style: italic; color: var(--green); }
 
   .subtitle {
-    font-size: 15px;
-    color: var(--text-mid);
-    font-weight: 300;
-    max-width: 420px;
-    margin: 0 auto 20px;
-    line-height: 1.65;
+    font-size: 15px; color: var(--text-mid); font-weight: 300;
+    max-width: 420px; margin: 0 auto 20px; line-height: 1.65;
   }
 
   .event-meta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 8px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 20px; flex-wrap: wrap; margin-top: 8px;
   }
 
   .meta-pill {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 13px;
-    color: var(--stone-dark);
-    background: white;
-    border: 1px solid var(--stone-light);
-    padding: 6px 14px;
-    border-radius: 20px;
+    display: flex; align-items: center; gap: 7px;
+    font-size: 13px; color: var(--stone-dark);
+    background: white; border: 1px solid var(--stone-light);
+    padding: 6px 14px; border-radius: 20px;
   }
 
   .meta-pill svg { width: 14px; height: 14px; }
 
-  /* MAIN GRID */
   .grid-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 16px 80px;
+    max-width: 1100px; margin: 0 auto; padding: 0 16px 80px;
   }
 
   .therapist-grid {
@@ -129,19 +98,14 @@
     gap: 20px;
   }
 
-  /* THERAPIST CARD */
   .therapist-card {
-    background: var(--warm-white);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
+    background: var(--warm-white); border-radius: 20px;
+    overflow: hidden; box-shadow: var(--shadow);
     border: 1px solid rgba(201,185,154,0.3);
     transition: box-shadow 0.3s ease;
   }
 
-  .therapist-card:hover {
-    box-shadow: var(--shadow-hover);
-  }
+  .therapist-card:hover { box-shadow: var(--shadow-hover); }
 
   .card-header {
     padding: 20px 20px 16px;
@@ -153,119 +117,90 @@
   .card-header.male   { background: linear-gradient(135deg, #edf3f0 0%, #f0f4ee 100%); }
 
   .gender-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 6px;
-    vertical-align: middle;
+    width: 8px; height: 8px; border-radius: 50%;
+    display: inline-block; margin-right: 6px; vertical-align: middle;
   }
   .female .gender-dot { background: var(--rose); }
   .male   .gender-dot { background: var(--green); }
 
   .therapist-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--bark);
-    margin-bottom: 2px;
+    font-size: 1.25rem; font-weight: 600; color: var(--bark); margin-bottom: 2px;
   }
 
   .therapist-role {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-light);
-    font-weight: 500;
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-light); font-weight: 500;
   }
 
   .slots-count {
-    position: absolute;
-    top: 20px; right: 20px;
-    font-size: 11px;
-    color: var(--text-light);
-    background: white;
-    border: 1px solid var(--stone-light);
-    padding: 3px 10px;
-    border-radius: 20px;
+    position: absolute; top: 20px; right: 20px;
+    font-size: 11px; color: var(--text-light);
+    background: white; border: 1px solid var(--stone-light);
+    padding: 3px 10px; border-radius: 20px;
   }
 
   .slots-count span { color: var(--green); font-weight: 500; }
 
-  /* SLOTS */
   .slots-list {
     padding: 14px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 7px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 7px;
   }
 
   .slot-btn {
-    padding: 9px 6px;
-    border-radius: 10px;
+    padding: 9px 6px; border-radius: 10px;
     border: 1.5px solid var(--stone-light);
-    background: white;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12.5px;
-    font-weight: 500;
-    color: var(--bark);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-align: center;
-    line-height: 1.3;
-    position: relative;
-    overflow: hidden;
+    background: white; font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px; font-weight: 500; color: var(--bark);
+    cursor: pointer; transition: all 0.2s ease;
+    text-align: center; line-height: 1.3;
   }
 
-  .slot-btn:hover:not(.booked) {
-    background: var(--green-pale);
-    border-color: var(--green-light);
-    color: var(--green);
-    transform: translateY(-1px);
+  .slot-btn:hover:not(.booked):not(.mine) {
+    background: var(--green-pale); border-color: var(--green-light);
+    color: var(--green); transform: translateY(-1px);
     box-shadow: 0 3px 10px rgba(107,124,92,0.15);
   }
 
   .slot-btn.booked {
-    background: var(--booked);
-    border-color: var(--booked);
-    color: var(--booked-text);
-    cursor: not-allowed;
-    font-weight: 400;
+    background: var(--booked-bg); border-color: var(--booked-bg);
+    color: var(--booked-text); cursor: not-allowed; font-weight: 400;
   }
 
-  .slot-btn.booked::after {
-    content: 'Booked';
-    display: block;
-    font-size: 9.5px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--booked-text);
-    margin-top: 2px;
+  .slot-btn.mine {
+    background: var(--rose-pale); border-color: var(--rose);
+    color: var(--rose-dark); cursor: pointer; font-weight: 500;
   }
 
-  /* MODAL OVERLAY */
+  .slot-btn.mine:hover {
+    background: #f0dbd6; border-color: var(--rose-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(201,125,110,0.2);
+  }
+
+  .slot-sub {
+    display: block; font-size: 9px; letter-spacing: 0.05em;
+    text-transform: uppercase; margin-top: 2px;
+  }
+
+  .slot-btn.booked .slot-sub { color: var(--booked-text); }
+  .slot-btn.mine .slot-sub   { color: var(--rose); }
+
   .overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
+    display: none; position: fixed; inset: 0;
     background: rgba(45,36,24,0.55);
-    backdrop-filter: blur(6px);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    backdrop-filter: blur(6px); z-index: 100;
+    align-items: center; justify-content: center; padding: 20px;
   }
 
   .overlay.active { display: flex; }
 
   .modal {
-    background: var(--warm-white);
-    border-radius: 24px;
-    padding: 36px 32px;
-    width: 100%;
-    max-width: 420px;
+    background: var(--warm-white); border-radius: 24px;
+    padding: 36px 32px; width: 100%; max-width: 420px;
     box-shadow: 0 20px 60px rgba(45,36,24,0.25);
     animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    position: relative;
+    position: relative; max-height: 90vh; overflow-y: auto;
   }
 
   @keyframes modalIn {
@@ -274,71 +209,46 @@
   }
 
   .modal-close {
-    position: absolute;
-    top: 16px; right: 16px;
-    background: var(--stone-light);
-    border: none;
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px;
-    color: var(--text-mid);
+    position: absolute; top: 16px; right: 16px;
+    background: var(--stone-light); border: none;
+    width: 30px; height: 30px; border-radius: 50%;
+    cursor: pointer; font-size: 16px; color: var(--text-mid);
     display: flex; align-items: center; justify-content: center;
     transition: background 0.2s;
   }
   .modal-close:hover { background: var(--stone); }
 
   .modal-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--green);
-    font-weight: 500;
-    margin-bottom: 6px;
+    font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--green);
+    font-weight: 500; margin-bottom: 6px;
   }
 
   .modal h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.7rem;
-    font-weight: 400;
-    color: var(--bark);
-    margin-bottom: 4px;
+    font-size: 1.7rem; font-weight: 400; color: var(--bark); margin-bottom: 4px;
   }
 
   .modal-slot-info {
-    font-size: 13px;
-    color: var(--text-mid);
-    margin-bottom: 24px;
-    padding-bottom: 20px;
+    font-size: 13px; color: var(--text-mid);
+    margin-bottom: 24px; padding-bottom: 20px;
     border-bottom: 1px solid var(--stone-light);
   }
 
-  .form-group {
-    margin-bottom: 16px;
-  }
+  .form-group { margin-bottom: 16px; }
 
   label {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-mid);
-    margin-bottom: 7px;
+    display: block; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--text-mid); margin-bottom: 7px;
   }
 
-  input[type="text"],
-  input[type="tel"] {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1.5px solid var(--stone-light);
-    border-radius: 12px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: var(--text);
-    background: white;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
+  input[type="text"], input[type="tel"] {
+    width: 100%; padding: 12px 14px;
+    border: 1.5px solid var(--stone-light); border-radius: 12px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    color: var(--text); background: white;
+    transition: border-color 0.2s, box-shadow 0.2s; outline: none;
   }
 
   input:focus {
@@ -348,136 +258,116 @@
 
   input.error { border-color: var(--rose); }
 
-  .error-msg {
-    font-size: 11px;
-    color: var(--rose);
-    margin-top: 5px;
-    display: none;
-  }
+  .error-msg { font-size: 11px; color: var(--rose); margin-top: 5px; display: none; }
   .error-msg.show { display: block; }
 
+  .screen { display: none; }
+  .screen.active { display: block; }
+
   .btn-confirm {
-    width: 100%;
-    padding: 14px;
-    background: var(--bark);
-    color: white;
-    border: none;
-    border-radius: 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: background 0.2s, transform 0.15s;
-    letter-spacing: 0.02em;
+    width: 100%; padding: 14px;
+    background: var(--bark); color: white; border: none;
+    border-radius: 14px; font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    margin-top: 8px; transition: background 0.2s, transform 0.15s;
   }
+  .btn-confirm:hover { background: var(--bark-light); transform: translateY(-1px); }
 
-  .btn-confirm:hover {
-    background: var(--bark-light);
-    transform: translateY(-1px);
-  }
+  .center-content { text-align: center; padding: 10px 0; }
 
-  .btn-confirm:active { transform: translateY(0); }
-
-  /* SUCCESS STATE */
-  .success-screen {
-    display: none;
-    text-align: center;
-    padding: 10px 0;
-  }
-
-  .success-screen.active { display: block; }
-  .form-screen.hidden { display: none; }
-
-  .success-icon {
-    width: 64px; height: 64px;
-    background: var(--green-pale);
-    border-radius: 50%;
+  .icon-circle {
+    width: 64px; height: 64px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 28px;
+    margin: 0 auto 20px; font-size: 28px;
     animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;
   }
+  .icon-green { background: var(--green-pale); }
+  .icon-rose  { background: var(--rose-pale); }
 
   @keyframes popIn {
     from { transform: scale(0); opacity: 0; }
     to   { transform: scale(1); opacity: 1; }
   }
 
-  .success-screen h3 {
+  .center-content h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    color: var(--bark);
-    margin-bottom: 8px;
+    font-size: 1.5rem; color: var(--bark); margin-bottom: 8px;
   }
 
-  .success-screen p {
-    font-size: 13.5px;
-    color: var(--text-mid);
-    line-height: 1.6;
-    margin-bottom: 20px;
+  .center-content p {
+    font-size: 13.5px; color: var(--text-mid);
+    line-height: 1.6; margin-bottom: 20px;
   }
 
-  .booking-summary {
-    background: var(--green-pale);
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin-bottom: 20px;
-    text-align: left;
-    font-size: 13px;
-    color: var(--text-mid);
-    line-height: 1.9;
+  .summary-box {
+    border-radius: 12px; padding: 14px 16px; margin-bottom: 20px;
+    text-align: left; font-size: 13px; color: var(--text-mid); line-height: 1.9;
+  }
+  .summary-green { background: var(--green-pale); }
+  .summary-rose  { background: var(--rose-pale); }
+  .summary-box strong { color: var(--bark); }
+
+  .manage-note {
+    font-size: 13px; color: var(--text-light);
+    margin-bottom: 16px; line-height: 1.5;
   }
 
-  .booking-summary strong { color: var(--bark); }
+  .btn-outline-rose {
+    width: 100%; padding: 13px;
+    background: var(--rose-pale); color: var(--rose-dark);
+    border: 1.5px solid var(--rose); border-radius: 14px;
+    font-family: 'DM Sans', sans-serif; font-size: 13.5px;
+    font-weight: 500; cursor: pointer; margin-bottom: 10px; transition: all 0.2s;
+  }
+  .btn-outline-rose:hover { background: #f0dbd6; }
+
+  .btn-outline {
+    width: 100%; padding: 13px; background: white;
+    color: var(--text-mid); border: 1.5px solid var(--stone-light);
+    border-radius: 14px; font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px; font-weight: 400; cursor: pointer;
+    transition: all 0.2s; margin-bottom: 10px;
+  }
+  .btn-outline:hover { background: var(--cream); }
+
+  .btn-primary {
+    width: 100%; padding: 13px; background: var(--bark);
+    color: white; border: none; border-radius: 14px;
+    font-family: 'DM Sans', sans-serif; font-size: 13.5px;
+    font-weight: 500; cursor: pointer; transition: background 0.2s;
+    margin-bottom: 10px;
+  }
+  .btn-primary:hover { background: var(--bark-light); }
 
   .btn-calendar {
-    width: 100%;
-    padding: 13px;
-    background: white;
-    color: var(--bark);
-    border: 1.5px solid var(--stone-light);
-    border-radius: 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13.5px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: all 0.2s;
+    width: 100%; padding: 13px; background: white;
+    color: var(--bark); border: 1.5px solid var(--stone-light);
+    border-radius: 14px; font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px; font-weight: 500; cursor: pointer;
+    margin-bottom: 10px; transition: all 0.2s;
     display: flex; align-items: center; justify-content: center; gap: 8px;
   }
+  .btn-calendar:hover { background: var(--green-pale); border-color: var(--green-light); }
 
-  .btn-calendar:hover {
-    background: var(--green-pale);
-    border-color: var(--green-light);
+  .legend {
+    display: flex; align-items: center; justify-content: center;
+    gap: 20px; flex-wrap: wrap;
+    margin-bottom: 20px; font-size: 12px; color: var(--text-mid);
   }
-
-  .btn-done {
-    width: 100%;
-    padding: 13px;
-    background: var(--bark);
-    color: white;
-    border: none;
-    border-radius: 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13.5px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s;
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot {
+    width: 12px; height: 12px; border-radius: 3px;
   }
+  .legend-dot.available { background: white; border: 1.5px solid var(--stone-light); }
+  .legend-dot.taken     { background: var(--booked-bg); }
+  .legend-dot.mine      { background: var(--rose-pale); border: 1.5px solid var(--rose); }
 
-  .btn-done:hover { background: var(--bark-light); }
-
-  /* FOOTER */
   footer {
-    text-align: center;
-    padding: 24px;
-    font-size: 12px;
-    color: var(--text-light);
+    text-align: center; padding: 24px;
+    font-size: 12px; color: var(--text-light);
     border-top: 1px solid var(--stone-light);
   }
 
-  /* RESPONSIVE */
   @media (max-width: 600px) {
     header { padding: 40px 20px 32px; }
     .therapist-grid { grid-template-columns: 1fr; }
@@ -510,44 +400,84 @@
 </header>
 
 <div class="grid-container">
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot available"></div> Available</div>
+    <div class="legend-item"><div class="legend-dot taken"></div> Taken</div>
+    <div class="legend-item"><div class="legend-dot mine"></div> Your booking</div>
+  </div>
   <div class="therapist-grid" id="therapistGrid"></div>
 </div>
 
-<!-- BOOKING MODAL -->
+<!-- MODAL -->
 <div class="overlay" id="overlay">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
 
-    <div class="form-screen" id="formScreen">
+    <!-- SCREEN 1: Book -->
+    <div class="screen" id="screenBook">
       <div class="modal-eyebrow">Book your slot</div>
-      <h2 id="modalTherapist">Therapist</h2>
-      <div class="modal-slot-info" id="modalSlotInfo">Time · Date</div>
-
+      <h2 id="bookTherapist"></h2>
+      <div class="modal-slot-info" id="bookSlotInfo"></div>
       <div class="form-group">
         <label for="inputName">Your Name</label>
         <input type="text" id="inputName" placeholder="e.g. Jane Smith" autocomplete="name">
         <div class="error-msg" id="nameError">Please enter your name</div>
       </div>
-
       <div class="form-group">
         <label for="inputPhone">Phone Number</label>
         <input type="tel" id="inputPhone" placeholder="e.g. 07700 900000" autocomplete="tel">
         <div class="error-msg" id="phoneError">Please enter your phone number</div>
       </div>
-
       <button class="btn-confirm" onclick="confirmBooking()">Confirm Booking</button>
     </div>
 
-    <div class="success-screen" id="successScreen">
-      <div class="success-icon">🌿</div>
-      <h3>You're all booked!</h3>
-      <p>Your reflexology session has been reserved. See you there!</p>
-      <div class="booking-summary" id="bookingSummary"></div>
-      <button class="btn-calendar" onclick="addToCalendar()">
-        📅 Add to My Calendar
-      </button>
-      <button class="btn-done" onclick="closeModal()">Done</button>
+    <!-- SCREEN 2: Booked success -->
+    <div class="screen" id="screenSuccess">
+      <div class="center-content">
+        <div class="icon-circle icon-green">🌿</div>
+        <h3>You're all booked!</h3>
+        <p>Your reflexology session has been reserved. See you there!</p>
+        <div class="summary-box summary-green" id="successSummary"></div>
+        <button class="btn-calendar" onclick="addToCalendar()">📅 Add to My Calendar</button>
+        <button class="btn-primary" onclick="closeModal()">Done</button>
+      </div>
     </div>
+
+    <!-- SCREEN 3: Manage existing booking -->
+    <div class="screen" id="screenManage">
+      <div class="modal-eyebrow">Your booking</div>
+      <h2 id="manageTherapist"></h2>
+      <div class="modal-slot-info" id="manageSlotInfo"></div>
+      <div class="summary-box summary-rose" id="manageSummary"></div>
+      <p class="manage-note">Want to change your slot? Cancel below and then rebook a different time.</p>
+      <button class="btn-outline-rose" onclick="showScreen('screenVerify')">Cancel this booking</button>
+      <button class="btn-outline" onclick="closeModal()">Keep my booking</button>
+    </div>
+
+    <!-- SCREEN 4: Verify identity -->
+    <div class="screen" id="screenVerify">
+      <div class="modal-eyebrow">Confirm it's you</div>
+      <h2>Enter your name</h2>
+      <div class="modal-slot-info">Type the name you booked with to confirm cancellation.</div>
+      <div class="form-group">
+        <label for="verifyName">Your Name</label>
+        <input type="text" id="verifyName" placeholder="Enter your name">
+        <div class="error-msg" id="verifyError">Name doesn't match. Please try again.</div>
+      </div>
+      <button class="btn-confirm" style="background:var(--rose); margin-bottom:10px;" onclick="confirmCancel()">Yes, cancel my booking</button>
+      <button class="btn-outline" onclick="showScreen('screenManage')">Go back</button>
+    </div>
+
+    <!-- SCREEN 5: Cancelled confirmation -->
+    <div class="screen" id="screenCancelled">
+      <div class="center-content">
+        <div class="icon-circle icon-rose">✓</div>
+        <h3>Booking cancelled</h3>
+        <p>Your slot has been freed up. Feel free to book a different time!</p>
+        <button class="btn-primary" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -556,8 +486,7 @@
 </footer>
 
 <script>
-  // ─── CONFIG ───────────────────────────────────────────────
-  const EVENT_DATE = '2026-04-20';
+  const EVENT_DATE         = '2026-04-20';
   const EVENT_DATE_DISPLAY = 'Monday, 20 April 2026';
 
   const THERAPISTS = [
@@ -567,42 +496,64 @@
     { id: 'm2', name: 'Male Therapist 2',   gender: 'male'   },
   ];
 
-  // Generate 15-min slots 08:30 → 14:15 (last slot starts 14:15, ends 14:30)
   function generateSlots() {
     const slots = [];
     let h = 8, m = 30;
     while (h < 14 || (h === 14 && m < 30)) {
-      const startH = String(h).padStart(2,'0');
-      const startM = String(m).padStart(2,'0');
+      const sH = String(h).padStart(2,'0'), sM = String(m).padStart(2,'0');
       let eh = h, em = m + 15;
       if (em >= 60) { eh++; em -= 60; }
-      const endH = String(eh).padStart(2,'0');
-      const endM = String(em).padStart(2,'0');
-      slots.push({ id: `${startH}${startM}`, label: `${startH}:${startM}`, end: `${endH}:${endM}` });
+      slots.push({
+        id: `${sH}${sM}`,
+        label: `${sH}:${sM}`,
+        end: `${String(eh).padStart(2,'0')}:${String(em).padStart(2,'0')}`
+      });
       m += 15; if (m >= 60) { h++; m -= 60; }
     }
     return slots;
   }
 
   const SLOTS = generateSlots();
+  const STORE = 'rbooking_';
 
-  // ─── STORAGE ──────────────────────────────────────────────
-  // Uses localStorage so bookings persist across page refreshes
-  // Key: "rbooking_<therapistId>_<slotId>" → JSON {name, phone}
-  const STORE_PREFIX = 'rbooking_';
-
-  function getBooking(therapistId, slotId) {
-    try { return JSON.parse(localStorage.getItem(`${STORE_PREFIX}${therapistId}_${slotId}`)); }
+  function getBooking(tid, sid) {
+    try { return JSON.parse(localStorage.getItem(`${STORE}${tid}_${sid}`)); }
     catch { return null; }
   }
 
-  function saveBooking(therapistId, slotId, data) {
-    localStorage.setItem(`${STORE_PREFIX}${therapistId}_${slotId}`, JSON.stringify(data));
+  function saveBooking(tid, sid, data) {
+    localStorage.setItem(`${STORE}${tid}_${sid}`, JSON.stringify(data));
   }
 
-  // ─── BUILD UI ─────────────────────────────────────────────
-  function countAvailable(therapistId) {
-    return SLOTS.filter(s => !getBooking(therapistId, s.id)).length;
+  function deleteBooking(tid, sid) {
+    localStorage.removeItem(`${STORE}${tid}_${sid}`);
+  }
+
+  // Session tracking — identifies this user's own bookings within the same browser session
+  function getMyBookings() {
+    try { return JSON.parse(sessionStorage.getItem('myBookings') || '[]'); }
+    catch { return []; }
+  }
+
+  function addMyBooking(tid, sid) {
+    const mine = getMyBookings();
+    const key = `${tid}_${sid}`;
+    if (!mine.includes(key)) mine.push(key);
+    sessionStorage.setItem('myBookings', JSON.stringify(mine));
+  }
+
+  function removeMyBooking(tid, sid) {
+    const mine = getMyBookings().filter(k => k !== `${tid}_${sid}`);
+    sessionStorage.setItem('myBookings', JSON.stringify(mine));
+  }
+
+  function isMyBooking(tid, sid) {
+    return getMyBookings().includes(`${tid}_${sid}`);
+  }
+
+  // ── RENDER ────────────────────────────────────────────────
+  function countAvailable(tid) {
+    return SLOTS.filter(s => !getBooking(tid, s.id)).length;
   }
 
   function renderAll() {
@@ -630,59 +581,61 @@
     container.innerHTML = '';
     SLOTS.forEach(s => {
       const booking = getBooking(t.id, s.id);
-      const btn = document.createElement('button');
-      btn.className = 'slot-btn' + (booking ? ' booked' : '');
-      btn.textContent = s.label;
-      btn.disabled = !!booking;
+      const mine    = isMyBooking(t.id, s.id);
+      const btn     = document.createElement('button');
+
       if (!booking) {
-        btn.onclick = () => openModal(t, s);
+        btn.className = 'slot-btn';
+        btn.innerHTML = `<span class="slot-time">${s.label}</span>`;
+        btn.onclick   = () => openBookModal(t, s);
+      } else if (mine) {
+        btn.className = 'slot-btn mine';
+        btn.innerHTML = `<span class="slot-time">${s.label}</span><span class="slot-sub">✦ Mine</span>`;
+        btn.onclick   = () => openManageModal(t, s);
+      } else {
+        btn.className = 'slot-btn booked';
+        btn.disabled  = true;
+        btn.innerHTML = `<span class="slot-time">${s.label}</span><span class="slot-sub">Taken</span>`;
       }
+
       container.appendChild(btn);
     });
   }
 
-  // ─── MODAL ────────────────────────────────────────────────
-  let currentTherapist = null;
-  let currentSlot = null;
+  // ── MODAL ─────────────────────────────────────────────────
+  let curT = null, curS = null;
 
-  function openModal(therapist, slot) {
-    currentTherapist = therapist;
-    currentSlot = slot;
-
-    document.getElementById('modalTherapist').textContent = therapist.name;
-    document.getElementById('modalSlotInfo').textContent =
-      `${slot.label} – ${slot.end}  ·  ${EVENT_DATE_DISPLAY}`;
-
-    document.getElementById('inputName').value = '';
-    document.getElementById('inputPhone').value = '';
-    document.getElementById('inputName').classList.remove('error');
-    document.getElementById('inputPhone').classList.remove('error');
-    document.getElementById('nameError').classList.remove('show');
-    document.getElementById('phoneError').classList.remove('show');
-
-    document.getElementById('formScreen').classList.remove('hidden');
-    document.getElementById('successScreen').classList.remove('active');
-
-    document.getElementById('overlay').classList.add('active');
-    document.getElementById('inputName').focus();
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
   }
 
   function closeModal() {
     document.getElementById('overlay').classList.remove('active');
-    currentTherapist = null;
-    currentSlot = null;
+    curT = null; curS = null;
   }
 
-  // Close on overlay click
   document.getElementById('overlay').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
 
-  // ─── CONFIRM ──────────────────────────────────────────────
+  function openBookModal(therapist, slot) {
+    curT = therapist; curS = slot;
+    document.getElementById('bookTherapist').textContent = therapist.name;
+    document.getElementById('bookSlotInfo').textContent  = `${slot.label} – ${slot.end}  ·  ${EVENT_DATE_DISPLAY}`;
+    document.getElementById('inputName').value  = '';
+    document.getElementById('inputPhone').value = '';
+    ['inputName','inputPhone'].forEach(id => document.getElementById(id).classList.remove('error'));
+    ['nameError','phoneError'].forEach(id => document.getElementById(id).classList.remove('show'));
+    showScreen('screenBook');
+    document.getElementById('overlay').classList.add('active');
+    setTimeout(() => document.getElementById('inputName').focus(), 300);
+  }
+
   function confirmBooking() {
     const name  = document.getElementById('inputName').value.trim();
     const phone = document.getElementById('inputPhone').value.trim();
-    let valid = true;
+    let valid   = true;
 
     if (!name) {
       document.getElementById('inputName').classList.add('error');
@@ -704,76 +657,84 @@
 
     if (!valid) return;
 
-    // Double-check slot hasn't been taken since page load
-    if (getBooking(currentTherapist.id, currentSlot.id)) {
-      alert('Sorry, this slot was just booked by someone else. Please choose another time.');
-      closeModal();
-      renderAll();
-      return;
+    if (getBooking(curT.id, curS.id)) {
+      alert('Sorry, this slot was just taken by someone else. Please choose another time.');
+      closeModal(); renderAll(); return;
     }
 
-    saveBooking(currentTherapist.id, currentSlot.id, { name, phone });
+    saveBooking(curT.id, curS.id, { name, phone });
+    addMyBooking(curT.id, curS.id);
 
-    // Show success
-    document.getElementById('formScreen').classList.add('hidden');
-    document.getElementById('successScreen').classList.add('active');
-    document.getElementById('bookingSummary').innerHTML = `
+    document.getElementById('successSummary').innerHTML = `
       <strong>Name:</strong> ${name}<br>
       <strong>Phone:</strong> ${phone}<br>
-      <strong>Therapist:</strong> ${currentTherapist.name}<br>
-      <strong>Time:</strong> ${currentSlot.label} – ${currentSlot.end}<br>
+      <strong>Therapist:</strong> ${curT.name}<br>
+      <strong>Time:</strong> ${curS.label} – ${curS.end}<br>
       <strong>Date:</strong> ${EVENT_DATE_DISPLAY}
     `;
 
-    // Refresh grid in background
+    showScreen('screenSuccess');
     renderAll();
   }
 
-  // ─── ADD TO CALENDAR ──────────────────────────────────────
+  function openManageModal(therapist, slot) {
+    curT = therapist; curS = slot;
+    const booking = getBooking(therapist.id, slot.id);
+    document.getElementById('manageTherapist').textContent = therapist.name;
+    document.getElementById('manageSlotInfo').textContent  = `${slot.label} – ${slot.end}  ·  ${EVENT_DATE_DISPLAY}`;
+    document.getElementById('manageSummary').innerHTML = `
+      <strong>Name:</strong> ${booking?.name || '—'}<br>
+      <strong>Phone:</strong> ${booking?.phone || '—'}<br>
+      <strong>Time:</strong> ${slot.label} – ${slot.end}
+    `;
+    showScreen('screenManage');
+    document.getElementById('overlay').classList.add('active');
+  }
+
+  function confirmCancel() {
+    const entered = document.getElementById('verifyName').value.trim().toLowerCase();
+    const booking = getBooking(curT.id, curS.id);
+    const stored  = (booking?.name || '').trim().toLowerCase();
+
+    if (!entered || entered !== stored) {
+      document.getElementById('verifyError').classList.add('show');
+      return;
+    }
+
+    document.getElementById('verifyError').classList.remove('show');
+    deleteBooking(curT.id, curS.id);
+    removeMyBooking(curT.id, curS.id);
+    showScreen('screenCancelled');
+    renderAll();
+  }
+
   function addToCalendar() {
-    if (!currentTherapist || !currentSlot) return;
-
-    // Build ICS file
-    const [sh, sm] = currentSlot.label.split(':').map(Number);
-    const [eh, em] = currentSlot.end.split(':').map(Number);
+    if (!curT || !curS) return;
+    const [sh, sm] = curS.label.split(':').map(Number);
+    const [eh, em] = curS.end.split(':').map(Number);
     const pad = n => String(n).padStart(2,'0');
-    const dateStr = EVENT_DATE.replace(/-/g,'');
-    const dtStart = `${dateStr}T${pad(sh)}${pad(sm)}00`;
-    const dtEnd   = `${dateStr}T${pad(eh)}${pad(em)}00`;
-
+    const d   = EVENT_DATE.replace(/-/g,'');
     const ics = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Reflexology Bookings//EN',
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Reflexology Bookings//EN',
       'BEGIN:VEVENT',
       `UID:${Date.now()}@reflexology`,
-      `DTSTART;TZID=Europe/London:${dtStart}`,
-      `DTEND;TZID=Europe/London:${dtEnd}`,
+      `DTSTART;TZID=Europe/London:${d}T${pad(sh)}${pad(sm)}00`,
+      `DTEND;TZID=Europe/London:${d}T${pad(eh)}${pad(em)}00`,
       'SUMMARY:Reflexology Session – Staff Appreciation Event',
-      `DESCRIPTION:Your reflexology session with ${currentTherapist.name}`,
+      `DESCRIPTION:Your reflexology session with ${curT.name}`,
       'LOCATION:Staff Appreciation Event',
-      'BEGIN:VALARM',
-      'TRIGGER:-PT30M',
-      'ACTION:DISPLAY',
+      'BEGIN:VALARM','TRIGGER:-PT30M','ACTION:DISPLAY',
       'DESCRIPTION:Your reflexology session is in 30 minutes!',
-      'END:VALARM',
-      'END:VEVENT',
-      'END:VCALENDAR'
+      'END:VALARM','END:VEVENT','END:VCALENDAR'
     ].join('\r\n');
-
     const blob = new Blob([ics], { type: 'text/calendar' });
     const url  = URL.createObjectURL(blob);
     const a    = document.createElement('a');
-    a.href = url;
-    a.download = 'reflexology-session.ics';
-    a.click();
+    a.href = url; a.download = 'reflexology-session.ics'; a.click();
     URL.revokeObjectURL(url);
   }
 
-  // ─── INIT ─────────────────────────────────────────────────
   renderAll();
-
-  // Auto-refresh every 30 seconds so bookings from other users appear
   setInterval(renderAll, 30000);
 </script>
 </body>
