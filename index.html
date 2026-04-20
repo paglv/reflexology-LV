@@ -43,7 +43,6 @@
       radial-gradient(ellipse at 80% 100%, rgba(107,124,92,0.12) 0%, transparent 60%);
   }
 
-  /* LOADING */
   .loading-screen {
     position: fixed; inset: 0; background: var(--cream);
     display: flex; flex-direction: column;
@@ -63,8 +62,6 @@
   }
 
   /* ── BOOKING PAGE ── */
-  #bookingPage { display: block; }
-
   header { text-align: center; padding: 56px 24px 40px; }
   .header-line { width: 60px; height: 1px; background: var(--stone); margin: 0 auto 24px; }
   .event-badge {
@@ -93,7 +90,6 @@
     padding: 6px 14px; border-radius: 20px;
   }
   .meta-pill svg { width: 14px; height: 14px; }
-
   .grid-container { max-width: 1100px; margin: 0 auto; padding: 0 16px 80px; }
   .therapist-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
@@ -153,14 +149,12 @@
   }
   .slot-btn.mine:hover {
     background: #f0dbd6; border-color: var(--rose-dark); transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(201,125,110,0.2);
   }
   .slot-sub {
     display: block; font-size: 9px; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 2px;
   }
   .slot-btn.booked .slot-sub { color: var(--booked-text); }
   .slot-btn.mine .slot-sub   { color: var(--rose); }
-
   .legend {
     display: flex; align-items: center; justify-content: center;
     gap: 20px; flex-wrap: wrap; margin-bottom: 20px; font-size: 12px; color: var(--text-mid);
@@ -172,13 +166,12 @@
   .legend-dot.mine      { background: var(--rose-pale); border: 1.5px solid var(--rose); }
 
   /* ── ADMIN PAGE ── */
-  #adminPage { display: none; padding: 40px 20px 80px; max-width: 1000px; margin: 0 auto; }
+  #adminPage { display: none; padding: 32px 16px 80px; max-width: 700px; margin: 0 auto; }
 
   .admin-header {
-    text-align: center; margin-bottom: 40px;
+    text-align: center; margin-bottom: 32px;
     padding-bottom: 24px; border-bottom: 2px solid var(--stone-light);
   }
-  .admin-header .event-badge { margin-bottom: 12px; }
   .admin-header h2 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2rem; font-weight: 300; color: var(--bark); margin-bottom: 6px;
@@ -186,83 +179,127 @@
   .admin-header p { font-size: 13px; color: var(--text-light); }
 
   .admin-stats {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px; margin-bottom: 32px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 28px;
   }
   .stat-card {
-    background: white; border-radius: 14px; padding: 16px;
+    background: white; border-radius: 14px; padding: 14px 10px;
     border: 1px solid var(--stone-light); text-align: center;
   }
   .stat-number {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem; font-weight: 600; color: var(--bark); line-height: 1;
+    font-size: 2rem; font-weight: 600; color: var(--bark); line-height: 1;
   }
-  .stat-label { font-size: 11px; color: var(--text-light); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase; }
-
-  /* Admin table */
-  .admin-table-wrap { overflow-x: auto; border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 32px; }
-  table { width: 100%; border-collapse: collapse; background: white; font-size: 13px; }
-  thead th {
-    padding: 14px 16px; text-align: left; font-size: 11px; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light);
-    background: var(--cream); border-bottom: 1px solid var(--stone-light);
-    white-space: nowrap;
-  }
-  thead th:first-child { border-radius: 16px 0 0 0; }
-  thead th:last-child  { border-radius: 0 16px 0 0; }
-  tbody tr { border-bottom: 1px solid var(--stone-light); transition: background 0.15s; }
-  tbody tr:last-child { border-bottom: none; }
-  tbody tr:hover { background: var(--cream); }
-  tbody td { padding: 11px 16px; color: var(--text-mid); vertical-align: middle; }
-  tbody td:first-child { font-weight: 600; color: var(--bark); font-size: 13px; }
-
-  .cell-booked {
-    background: var(--green-pale); color: var(--green);
-    border-radius: 8px; padding: 4px 10px; font-size: 12px;
-    font-weight: 500; display: inline-block; white-space: nowrap;
-  }
-  .cell-empty {
-    color: var(--booked-text); font-size: 12px;
+  .stat-label {
+    font-size: 10px; color: var(--text-light); margin-top: 4px;
+    letter-spacing: 0.08em; text-transform: uppercase;
   }
 
-  /* Therapist booking cards in admin */
-  .admin-therapist-section { margin-bottom: 28px; }
-  .admin-therapist-title {
+  .admin-refresh {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: var(--text-light); margin-bottom: 24px;
+    background: white; border: 1px solid var(--stone-light);
+    border-radius: 12px; padding: 10px 14px;
+  }
+  .btn-refresh {
+    background: var(--green-pale); border: 1px solid var(--green-light);
+    color: var(--green); padding: 5px 14px; border-radius: 20px;
+    font-size: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s; font-weight: 500;
+  }
+  .btn-refresh:hover { background: var(--green); color: white; }
+
+  /* Therapist section */
+  .admin-therapist-section {
+    background: white; border-radius: 20px; overflow: hidden;
+    box-shadow: var(--shadow); border: 1px solid rgba(201,185,154,0.25);
+    margin-bottom: 20px;
+  }
+
+  .admin-therapist-header {
+    padding: 18px 20px; border-bottom: 1px solid var(--stone-light);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px;
+  }
+
+  .admin-therapist-header.female1 { background: linear-gradient(135deg, #fdf0ed 0%, #faf3f8 100%); }
+  .admin-therapist-header.female2 { background: linear-gradient(135deg, #fde8f0 0%, #faf0fb 100%); }
+  .admin-therapist-header.female3 { background: linear-gradient(135deg, #ece8f7 0%, #f3f0fb 100%); }
+  .admin-therapist-header.male1   { background: linear-gradient(135deg, #edf3f0 0%, #f0f4ee 100%); }
+
+  .admin-therapist-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem; font-weight: 600; color: var(--bark);
-    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+    font-size: 1.2rem; font-weight: 600; color: var(--bark);
+    display: flex; align-items: center; gap: 8px;
   }
+
   .admin-therapist-dot {
     width: 10px; height: 10px; border-radius: 50%; display: inline-block;
   }
 
-  .booking-list { display: flex; flex-direction: column; gap: 8px; }
+  .therapist-mini-stats {
+    display: flex; gap: 8px;
+  }
+
+  .mini-stat {
+    font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500;
+  }
+  .mini-stat.booked-stat  { background: var(--green-pale); color: var(--green); }
+  .mini-stat.attended-stat { background: #d4edda; color: #2d6a3f; }
+  .mini-stat.pending-stat  { background: var(--rose-pale); color: var(--rose-dark); }
+
+  /* Booking rows */
+  .booking-rows { padding: 8px 0; }
+
   .booking-row {
-    background: white; border-radius: 12px; padding: 12px 16px;
-    border: 1px solid var(--stone-light);
-    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 20px; border-bottom: 1px solid var(--stone-light);
+    transition: background 0.15s; flex-wrap: wrap;
   }
-  .booking-time {
+  .booking-row:last-child { border-bottom: none; }
+  .booking-row:hover { background: var(--cream); }
+  .booking-row.attended { background: #f0f7f2; }
+  .booking-row.attended:hover { background: #e8f2ec; }
+
+  .row-time {
     font-size: 13px; font-weight: 600; color: var(--bark);
-    min-width: 80px;
+    min-width: 110px; white-space: nowrap;
   }
-  .booking-name { font-size: 13px; color: var(--text); flex: 1; }
-  .booking-phone { font-size: 12px; color: var(--text-light); }
+
+  .row-info { flex: 1; min-width: 120px; }
+  .row-name { font-size: 13px; color: var(--text); font-weight: 500; }
+  .row-phone { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+
+  .row-status { display: flex; align-items: center; gap: 8px; }
+
+  .attended-badge {
+    display: flex; align-items: center; gap: 5px;
+    background: #d4edda; color: #2d6a3f; border-radius: 20px;
+    padding: 4px 12px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .btn-attend {
+    background: var(--green-pale); color: var(--green);
+    border: 1.5px solid var(--green-light); border-radius: 20px;
+    padding: 5px 14px; font-size: 11px; font-weight: 600;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s; white-space: nowrap; letter-spacing: 0.03em;
+  }
+  .btn-attend:hover { background: var(--green); color: white; border-color: var(--green); }
+
+  .btn-undo {
+    background: white; color: var(--text-light);
+    border: 1px solid var(--stone-light); border-radius: 20px;
+    padding: 4px 10px; font-size: 10px;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .btn-undo:hover { background: var(--rose-pale); color: var(--rose-dark); border-color: var(--rose); }
+
   .no-bookings {
-    font-size: 13px; color: var(--text-light); font-style: italic; padding: 12px 0;
+    font-size: 13px; color: var(--text-light); font-style: italic;
+    padding: 20px; text-align: center;
   }
-
-  .admin-refresh {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    font-size: 12px; color: var(--text-light); margin-bottom: 24px;
-  }
-
-  .btn-refresh {
-    background: white; border: 1px solid var(--stone-light); color: var(--text-mid);
-    padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer;
-    font-family: 'DM Sans', sans-serif; transition: all 0.2s;
-  }
-  .btn-refresh:hover { background: var(--green-pale); border-color: var(--green-light); }
 
   /* MODAL */
   .overlay {
@@ -385,6 +422,8 @@
     .modal { padding: 28px 22px; }
     .slots-list { grid-template-columns: repeat(3, 1fr); }
     .admin-stats { grid-template-columns: repeat(2, 1fr); }
+    .booking-row { gap: 8px; }
+    .row-time { min-width: 90px; }
   }
 </style>
 </head>
@@ -417,7 +456,6 @@
       </div>
     </div>
   </header>
-
   <div class="grid-container">
     <div class="legend">
       <div class="legend-item"><div class="legend-dot available"></div> Available</div>
@@ -436,31 +474,13 @@
     <p>Monday, 20 April 2026 &nbsp;·&nbsp; 8:30 – 14:30 &nbsp;·&nbsp; Staff Appreciation Event</p>
   </div>
 
+  <div class="admin-stats" id="adminStats"></div>
+
   <div class="admin-refresh">
-    <span id="lastUpdated">Live updates enabled</span>
+    <span id="lastUpdated">Live updates enabled ✦</span>
     <button class="btn-refresh" onclick="renderAdmin()">↻ Refresh</button>
   </div>
 
-  <!-- Summary stats -->
-  <div class="admin-stats" id="adminStats"></div>
-
-  <!-- Full schedule table -->
-  <div class="admin-table-wrap">
-    <table id="adminTable">
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>Female Therapist 1</th>
-          <th>Female Therapist 2</th>
-          <th>Female Therapist 3</th>
-          <th>Male Therapist 1</th>
-        </tr>
-      </thead>
-      <tbody id="adminTableBody"></tbody>
-    </table>
-  </div>
-
-  <!-- Bookings by therapist -->
   <div id="adminByTherapist"></div>
 </div>
 
@@ -468,7 +488,6 @@
 <div class="overlay" id="overlay">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
-
     <div class="screen" id="screenBook">
       <div class="modal-eyebrow">Book your slot</div>
       <h2 id="bookTherapist"></h2>
@@ -485,7 +504,6 @@
       </div>
       <button class="btn-confirm" id="btnConfirm" onclick="confirmBooking()">Confirm Booking</button>
     </div>
-
     <div class="screen" id="screenSuccess">
       <div class="center-content">
         <div class="icon-circle icon-green">🌿</div>
@@ -496,7 +514,6 @@
         <button class="btn-primary" onclick="closeModal()">Done</button>
       </div>
     </div>
-
     <div class="screen" id="screenManage">
       <div class="modal-eyebrow">Your booking</div>
       <h2 id="manageTherapist"></h2>
@@ -506,7 +523,6 @@
       <button class="btn-outline-rose" onclick="showScreen('screenVerify')">Cancel this booking</button>
       <button class="btn-outline" onclick="closeModal()">Keep my booking</button>
     </div>
-
     <div class="screen" id="screenVerify">
       <div class="modal-eyebrow">Confirm it's you</div>
       <h2>Enter your name</h2>
@@ -519,7 +535,6 @@
       <button class="btn-confirm" style="background:var(--rose); margin-bottom:10px;" id="btnCancelConfirm" onclick="confirmCancel()">Yes, cancel my booking</button>
       <button class="btn-outline" onclick="showScreen('screenManage')">Go back</button>
     </div>
-
     <div class="screen" id="screenCancelled">
       <div class="center-content">
         <div class="icon-circle icon-rose">✓</div>
@@ -531,13 +546,11 @@
   </div>
 </div>
 
-<footer id="pageFooter">
-  Reflexology Bookings · Staff Appreciation Event · 20 April 2026
-</footer>
+<footer>Reflexology Bookings · Staff Appreciation Event · 20 April 2026</footer>
 
 <script type="module">
   import { initializeApp }   from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-  import { getDatabase, ref, set, remove, onValue, get }
+  import { getDatabase, ref, set, remove, update, onValue, get }
     from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 
   const firebaseConfig = {
@@ -594,26 +607,18 @@
   const SESSION_ID = getSessionId();
   let bookings = {};
 
-  // ── Check if admin mode ───────────────────────────────────
   const isAdmin = new URLSearchParams(window.location.search).get('admin') === 'true';
-
   if (isAdmin) {
     document.getElementById('bookingPage').style.display = 'none';
     document.getElementById('adminPage').style.display   = 'block';
   }
 
-  // ── Firebase live listener ────────────────────────────────
-  const bookingsRef = ref(db, 'bookings');
-  onValue(bookingsRef, (snapshot) => {
+  onValue(ref(db, 'bookings'), (snapshot) => {
     bookings = snapshot.val() || {};
-    if (isAdmin) {
-      renderAdmin();
-    } else {
-      renderAll();
-    }
+    isAdmin ? renderAdmin() : renderAll();
     hideLoading();
     const lu = document.getElementById('lastUpdated');
-    if (lu) lu.textContent = 'Last updated: ' + new Date().toLocaleTimeString();
+    if (lu) lu.textContent = 'Last updated: ' + new Date().toLocaleTimeString() + ' ✦';
   });
 
   function hideLoading() {
@@ -622,7 +627,7 @@
     setTimeout(() => ls.style.display = 'none', 400);
   }
 
-  // ── BOOKING PAGE RENDER ───────────────────────────────────
+  // ── BOOKING PAGE ──────────────────────────────────────────
   function countAvailable(tid) {
     return SLOTS.filter(s => !bookings[`${tid}_${s.id}`]).length;
   }
@@ -657,103 +662,110 @@
       const btn     = document.createElement('button');
       if (!booking) {
         btn.className = 'slot-btn';
-        btn.innerHTML = `<span class="slot-time">${s.label}</span>`;
+        btn.innerHTML = `<span>${s.label}</span>`;
         btn.onclick   = () => openBookModal(t, s);
       } else if (mine) {
         btn.className = 'slot-btn mine';
-        btn.innerHTML = `<span class="slot-time">${s.label}</span><span class="slot-sub">✦ Mine</span>`;
+        btn.innerHTML = `<span>${s.label}</span><span class="slot-sub">✦ Mine</span>`;
         btn.onclick   = () => openManageModal(t, s);
       } else {
         btn.className = 'slot-btn booked';
         btn.disabled  = true;
-        btn.innerHTML = `<span class="slot-time">${s.label}</span><span class="slot-sub">Taken</span>`;
+        btn.innerHTML = `<span>${s.label}</span><span class="slot-sub">Taken</span>`;
       }
       container.appendChild(btn);
     });
   }
 
-  // ── ADMIN PAGE RENDER ─────────────────────────────────────
+  // ── ADMIN PAGE ────────────────────────────────────────────
   window.renderAdmin = function() {
-    const totalSlots  = THERAPISTS.length * SLOTS.length;
-    const totalBooked = Object.keys(bookings).length;
-    const totalFree   = totalSlots - totalBooked;
+    const totalSlots    = THERAPISTS.length * SLOTS.length;
+    const totalBooked   = Object.keys(bookings).length;
+    const totalAttended = Object.values(bookings).filter(b => b.attended).length;
+    const totalFree     = totalSlots - totalBooked;
 
-    // Stats
-    const statsEl = document.getElementById('adminStats');
-    statsEl.innerHTML = `
+    document.getElementById('adminStats').innerHTML = `
       <div class="stat-card">
         <div class="stat-number" style="color:var(--green)">${totalBooked}</div>
         <div class="stat-label">Booked</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="color:#2d6a3f">${totalAttended}</div>
+        <div class="stat-label">Attended</div>
       </div>
       <div class="stat-card">
         <div class="stat-number" style="color:var(--stone-dark)">${totalFree}</div>
         <div class="stat-label">Available</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">${totalSlots}</div>
-        <div class="stat-label">Total Slots</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" style="color:var(--rose)">${Math.round((totalBooked/totalSlots)*100)}%</div>
-        <div class="stat-label">Filled</div>
+        <div class="stat-number" style="color:var(--rose)">${totalBooked - totalAttended}</div>
+        <div class="stat-label">Pending</div>
       </div>
     `;
 
-    // Table — rows = time slots, cols = therapists
-    const tbody = document.getElementById('adminTableBody');
-    tbody.innerHTML = '';
-    SLOTS.forEach(s => {
-      const tr = document.createElement('tr');
-      let cells = `<td>${s.label} – ${s.end}</td>`;
-      THERAPISTS.forEach(t => {
-        const booking = bookings[`${t.id}_${s.id}`];
-        if (booking) {
-          cells += `<td><span class="cell-booked">✓ ${booking.name}</span></td>`;
-        } else {
-          cells += `<td><span class="cell-empty">—</span></td>`;
-        }
-      });
-      tr.innerHTML = cells;
-      tbody.appendChild(tr);
-    });
+    const container = document.getElementById('adminByTherapist');
+    container.innerHTML = '';
 
-    // By therapist breakdown
-    const byT = document.getElementById('adminByTherapist');
-    byT.innerHTML = '';
     THERAPISTS.forEach(t => {
       const myBookings = SLOTS
-        .map(s => ({ slot: s, booking: bookings[`${t.id}_${s.id}`] }))
+        .map(s => ({ slot: s, key: `${t.id}_${s.id}`, booking: bookings[`${t.id}_${s.id}`] }))
         .filter(x => x.booking);
+
+      const booked   = myBookings.length;
+      const attended = myBookings.filter(x => x.booking.attended).length;
+      const pending  = booked - attended;
 
       const section = document.createElement('div');
       section.className = 'admin-therapist-section';
-      section.innerHTML = `
-        <div class="admin-therapist-title">
-          <span class="admin-therapist-dot" style="background:${t.dotColor}"></span>
-          ${t.name}
-          <span style="font-size:13px; font-weight:400; color:var(--text-light); font-family:'DM Sans',sans-serif;">
-            — ${myBookings.length} of ${SLOTS.length} slots booked
-          </span>
-        </div>
-        <div class="booking-list" id="blist_${t.id}"></div>
-      `;
-      byT.appendChild(section);
 
-      const list = section.querySelector(`#blist_${t.id}`);
+      section.innerHTML = `
+        <div class="admin-therapist-header ${t.gender}">
+          <div class="admin-therapist-name">
+            <span class="admin-therapist-dot" style="background:${t.dotColor}"></span>
+            ${t.name}
+          </div>
+          <div class="therapist-mini-stats">
+            <span class="mini-stat booked-stat">${booked} booked</span>
+            <span class="mini-stat attended-stat">✓ ${attended} attended</span>
+            ${pending > 0 ? `<span class="mini-stat pending-stat">${pending} pending</span>` : ''}
+          </div>
+        </div>
+        <div class="booking-rows" id="rows_${t.id}"></div>
+      `;
+      container.appendChild(section);
+
+      const rowsEl = section.querySelector(`#rows_${t.id}`);
+
       if (myBookings.length === 0) {
-        list.innerHTML = '<div class="no-bookings">No bookings yet</div>';
-      } else {
-        myBookings.forEach(({ slot, booking }) => {
-          list.innerHTML += `
-            <div class="booking-row">
-              <div class="booking-time">${slot.label} – ${slot.end}</div>
-              <div class="booking-name">👤 ${booking.name}</div>
-              <div class="booking-phone">📞 ${booking.phone}</div>
-            </div>
-          `;
-        });
+        rowsEl.innerHTML = '<div class="no-bookings">No bookings yet</div>';
+        return;
       }
+
+      myBookings.forEach(({ slot, key, booking }) => {
+        const row = document.createElement('div');
+        row.className = 'booking-row' + (booking.attended ? ' attended' : '');
+        row.innerHTML = `
+          <div class="row-time">${slot.label} – ${slot.end}</div>
+          <div class="row-info">
+            <div class="row-name">👤 ${booking.name}</div>
+            <div class="row-phone">📞 ${booking.phone}</div>
+          </div>
+          <div class="row-status" id="status_${key.replace('_','-')}">
+            ${booking.attended
+              ? `<span class="attended-badge">✓ Attended</span>
+                 <button class="btn-undo" onclick="markAttended('${key}', false)">Undo</button>`
+              : `<button class="btn-attend" onclick="markAttended('${key}', true)">✓ Mark attended</button>`
+            }
+          </div>
+        `;
+        rowsEl.appendChild(row);
+      });
     });
+  };
+
+  window.markAttended = async function(key, attended) {
+    await update(ref(db, `bookings/${key}`), { attended });
+    // Firebase onValue will trigger renderAdmin automatically
   };
 
   // ── MODAL ─────────────────────────────────────────────────
@@ -809,7 +821,7 @@
     if (!valid) return;
     const btn = document.getElementById('btnConfirm');
     btn.disabled = true; btn.textContent = 'Saving…';
-    const key = `${curT.id}_${curS.id}`;
+    const key  = `${curT.id}_${curS.id}`;
     const snap = await get(ref(db, `bookings/${key}`));
     if (snap.exists()) {
       alert('Sorry, this slot was just taken by someone else. Please choose another time.');
@@ -817,7 +829,8 @@
       window.closeModal(); return;
     }
     await set(ref(db, `bookings/${key}`), {
-      name, phone, sessionId: SESSION_ID, bookedAt: new Date().toISOString()
+      name, phone, sessionId: SESSION_ID,
+      bookedAt: new Date().toISOString(), attended: false
     });
     btn.disabled = false; btn.textContent = 'Confirm Booking';
     document.getElementById('successSummary').innerHTML = `
